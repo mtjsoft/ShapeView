@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--填充色-->
+    <attr name="solidColor" format="color|reference" />
+    <!--边框色-->
+    <attr name="strokeColor" format="color|reference" />
+    <!--边框宽度-->
+    <attr name="strokeWidth" format="dimension" />
+    <!--圆角弧度-->
+    <attr name="radius" format="dimension" />
+    <!--四个角的圆角弧度-->
+    <attr name="topLeftRadius" format="dimension" />
+    <attr name="topRightRadius" format="dimension" />
+    <attr name="bottomLeftRadius" format="dimension" />
+    <attr name="bottomRightRadius" format="dimension" />
+
+    <!--自定义TextView-->
+    <declare-styleable name="ShapeTextView">
+        <!--填充色-->
+        <attr name="solidColor" />
+        <!--边框色-->
+        <attr name="strokeColor" />
+        <!--边框宽度-->
+        <attr name="strokeWidth" />
+        <!--圆角弧度-->
+        <attr name="radius" />
+        <!--四个角的圆角弧度-->
+        <attr name="topLeftRadius" />
+        <attr name="topRightRadius" />
+        <attr name="bottomLeftRadius" />
+        <attr name="bottomRightRadius" />
+        <!--是否使用Selector选择器-->
+        <attr name="openSelector" format="boolean" />
+        <!--使用选择器时的字体色-->
+        <attr name="textNormalColor" format="color|reference" />
+        <attr name="textSelectColor" format="color|reference" />
+        <!--选中填充色-->
+        <attr name="solidSelectColor" format="color|reference" />
+        <!--选中边框色-->
+        <attr name="strokeSelectColor" format="color|reference" />
+    </declare-styleable>
+
+    <!--自定义EditText-->
+    <declare-styleable name="ShapeEditText">
+        <!--填充色-->
+        <attr name="solidColor" />
+        <!--边框色-->
+        <attr name="strokeColor" />
+        <!--边框宽度-->
+        <attr name="strokeWidth" />
+        <!--圆角弧度-->
+        <attr name="radius" />
+        <!--四个角的圆角弧度-->
+        <attr name="topLeftRadius" />
+        <attr name="topRightRadius" />
+        <attr name="bottomLeftRadius" />
+        <attr name="bottomRightRadius" />
+    </declare-styleable>
+</resources>

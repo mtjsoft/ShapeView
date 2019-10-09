@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="ShapeTextView示例"
+            android:textColor="@android:color/black" />
+
+        <cn.mtjsoft.www.shapeview.ShapeTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="4个圆角、填充色"
+            android:textColor="@android:color/white"
+            android:textSize="14sp"
+            app:radius="5dp"
+            app:solidColor="@color/colorAccent" />
+
+        <cn.mtjsoft.www.shapeview.ShapeTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="4个圆角、边框"
+            android:textColor="@color/colorAccent"
+            android:textSize="14sp"
+            app:radius="5dp"
+            app:strokeColor="@color/colorAccent"
+            app:strokeWidth="1dp" />
+
+        <cn.mtjsoft.www.shapeview.ShapeTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="2个圆角、边框"
+            android:textColor="@color/colorAccent"
+            android:textSize="14sp"
+            app:bottomLeftRadius="10dp"
+            app:strokeColor="@color/colorAccent"
+            app:strokeWidth="1dp"
+            app:topRightRadius="10dp" />
+
+        <cn.mtjsoft.www.shapeview.ShapeTextView
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_margin="10dp"
+            android:gravity="center"
+            android:text="圆形填充"
+            android:textColor="@android:color/white"
+            android:textSize="14sp"
+            app:radius="40dp"
+            app:solidColor="@color/colorAccent" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="ShapeEditText示例"
+            android:textColor="@android:color/black" />
+
+        <cn.mtjsoft.www.shapeview.ShapeEditText
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_margin="10dp"
+            android:gravity="center"
+            android:text="输入框，圆角、边框"
+            android:textColor="@color/colorAccent"
+            android:textSize="12sp"
+            app:radius="20dp"
+            app:strokeColor="@color/colorAccent"
+            app:strokeWidth="1dp" />
+
+    </LinearLayout>
+</android.support.v4.widget.NestedScrollView>
