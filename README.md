@@ -157,7 +157,7 @@ topLeftRadius  | 单独设置左上角弧度
 topRightRadius  | 单独设置右上角弧度
 bottomLeftRadius  | 单独设置左下角弧度
 bottomRightRadius  | 单独设置右下角弧度
-openSelector  | 是否使用Selector选择器
+openSelector  | 是否使用Selector选择器 | ShapeCheckBox、ShapeRadioButton有以下属性
 textNormalColor  | 使用选择器时的默认字体色
 textSelectColor  | 使用选择器时的选中字体色
 solidSelectColor  | 使用选择器时的选中填充色
@@ -165,9 +165,9 @@ strokeSelectColor  | 使用选择器时的选中边框色
 
 **添加我个人微信号交流，记得添加时备注一下哦**
 
-<img src="./wxqrcode.jpg">
+![个人微信号](https://img-blog.csdnimg.cn/20190925134415595.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzI4Nzc5MDgz,size_16,color_FFFFFF,t_70)
 
 **本人公众号，也可关注一波，共同交流吧。**
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/2019012509485178.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzI4Nzc5MDgz,size_16,color_FFFFFF,t_70)
+![本人公众号](https://img-blog.csdnimg.cn/2019012509485178.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzI4Nzc5MDgz,size_16,color_FFFFFF,t_70)
 
