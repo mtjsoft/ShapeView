@@ -7,6 +7,8 @@ import android.graphics.drawable.GradientDrawable;
 import android.support.v7.widget.AppCompatEditText;
 import android.util.AttributeSet;
 
+import cn.mtjsoft.www.shapeview.util.GradientDrawableUtil;
+
 /**
  * 实现自定义圆角背景
  */
@@ -39,12 +41,14 @@ public class ShapeEditText extends AppCompatEditText {
         super(context, attrs, defStyleAttr);
         init(context, attrs);
         //默认背景
-        gradientDrawable = getNeedDrawable(new float[]{topLeftRadius, topLeftRadius, topRightRadius, topRightRadius,
+        gradientDrawable = GradientDrawableUtil.init().getNeedDrawable(new float[]{topLeftRadius, topLeftRadius, topRightRadius, topRightRadius,
                         bottomRightRadius, bottomRightRadius, bottomLeftRadius, bottomLeftRadius},
                 solidColor, strokeWidth, strokeColor);
-        setBackgroundDrawable(gradientDrawable);
+        this.setBackground(gradientDrawable);
+        this.setFocusable(true);
+        this.setFocusableInTouchMode(true);
+        this.setClickable(true);
     }
-
 
     /**
      * 初始化参数
@@ -65,21 +69,5 @@ public class ShapeEditText extends AppCompatEditText {
         bottomLeftRadius = ta.getDimensionPixelSize(R.styleable.ShapeEditText_bottomLeftRadius, radius);
         bottomRightRadius = ta.getDimensionPixelSize(R.styleable.ShapeEditText_bottomRightRadius, radius);
         ta.recycle();
-    }
-
-    /**
-     * @param radius      四个角的半径
-     * @param bgColor     背景颜色
-     * @param strokeWidth 边框宽度
-     * @param strokeColor 边框颜色
-     * @return
-     */
-    public static GradientDrawable getNeedDrawable(float[] radius, int bgColor, int strokeWidth, int strokeColor) {
-        GradientDrawable drawable = new GradientDrawable();
-        drawable.setShape(GradientDrawable.RECTANGLE);
-        drawable.setCornerRadii(radius);
-        drawable.setStroke(strokeWidth, strokeColor);
-        drawable.setColor(bgColor);
-        return drawable;
     }
 }
