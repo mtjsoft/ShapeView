@@ -2,6 +2,7 @@
 # ShapeView组件：
 
 自定义带圆角背景的ShapeTextView、ShapeEditText；
+
 自定义根据状态切换背景色、字体色的ShapeCheckBox、ShapeRadioButton；
 
 UI设计图会经常出现不同圆角、不同背景色的按钮和输入框。
@@ -38,7 +39,7 @@ dependencies {
 
 # 3、在需要使用的布局xml中添加ShapeView组件，根据需要设置相关属性
 
-ShapeTextView4个圆角、填充色
+### ShapeTextView4个圆角、填充色
 ```
 <cn.mtjsoft.www.shapeview.ShapeTextView
             android:layout_width="match_parent"
@@ -52,7 +53,7 @@ ShapeTextView4个圆角、填充色
             app:radius="5dp"
             app:solidColor="@color/colorAccent" />
 ```
-ShapeTextView2个圆角、边框
+### ShapeTextView2个圆角、边框
 ```
 <cn.mtjsoft.www.shapeview.ShapeTextView
             android:layout_width="match_parent"
@@ -68,7 +69,7 @@ ShapeTextView2个圆角、边框
             app:strokeWidth="1dp"
             app:topRightRadius="10dp" />
 ```
-ShapeEditText输入框，圆角、边框
+### ShapeEditText输入框，圆角、边框
 ```
 <cn.mtjsoft.www.shapeview.ShapeEditText
             android:layout_width="match_parent"
@@ -82,7 +83,7 @@ ShapeEditText输入框，圆角、边框
             app:strokeColor="@color/colorAccent"
             app:strokeWidth="1dp" />
 ```
-ShapeCheckBox，根据选中状态切换背景色、字体色
+### ShapeCheckBox，根据选中状态切换背景色、字体色
 ```
 <cn.mtjsoft.www.shapeview.ShapeCheckBox
             android:layout_width="match_parent"
@@ -100,7 +101,7 @@ ShapeCheckBox，根据选中状态切换背景色、字体色
             app:textNormalColor="@color/colorPrimary"
             app:textSelectColor="@color/colorAccent"/>
 ```
-ShapeRadioButton示例
+### ShapeRadioButton示例
 ```
 <RadioGroup
             android:layout_width="wrap_content"
