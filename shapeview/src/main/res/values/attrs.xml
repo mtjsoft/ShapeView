@@ -40,6 +40,23 @@
         <attr name="bottomRightRadius" />
     </declare-styleable>
 
+    <!--自定义TextView-->
+    <declare-styleable name="ShapeImageView">
+        <!--填充色-->
+        <attr name="solidColor" />
+        <!--边框色-->
+        <attr name="strokeColor" />
+        <!--边框宽度-->
+        <attr name="strokeWidth" />
+        <!--圆角弧度-->
+        <attr name="radius" />
+        <!--四个角的圆角弧度-->
+        <attr name="topLeftRadius" />
+        <attr name="topRightRadius" />
+        <attr name="bottomLeftRadius" />
+        <attr name="bottomRightRadius" />
+    </declare-styleable>
+
     <!--自定义EditText-->
     <declare-styleable name="ShapeEditText">
         <!--填充色-->
@@ -107,5 +124,39 @@
         <attr name="solidSelectColor" />
         <!--选中边框色-->
         <attr name="strokeSelectColor" />
+    </declare-styleable>
+
+    <!--自定义ShapeRelativeLayout-->
+    <declare-styleable name="ShapeRelativeLayout">
+        <!--填充色-->
+        <attr name="solidColor" />
+        <!--边框色-->
+        <attr name="strokeColor" />
+        <!--边框宽度-->
+        <attr name="strokeWidth" />
+        <!--圆角弧度-->
+        <attr name="radius" />
+        <!--四个角的圆角弧度-->
+        <attr name="topLeftRadius" />
+        <attr name="topRightRadius" />
+        <attr name="bottomLeftRadius" />
+        <attr name="bottomRightRadius" />
+    </declare-styleable>
+
+    <!--自定义ShapeLinearLayout-->
+    <declare-styleable name="ShapeLinearLayout">
+        <!--填充色-->
+        <attr name="solidColor" />
+        <!--边框色-->
+        <attr name="strokeColor" />
+        <!--边框宽度-->
+        <attr name="strokeWidth" />
+        <!--圆角弧度-->
+        <attr name="radius" />
+        <!--四个角的圆角弧度-->
+        <attr name="topLeftRadius" />
+        <attr name="topRightRadius" />
+        <attr name="bottomLeftRadius" />
+        <attr name="bottomRightRadius" />
     </declare-styleable>
 </resources>

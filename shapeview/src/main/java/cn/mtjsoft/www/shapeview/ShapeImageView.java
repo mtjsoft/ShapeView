@@ -4,15 +4,15 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.graphics.drawable.GradientDrawable;
-import android.support.v7.widget.AppCompatTextView;
 import android.util.AttributeSet;
+import android.widget.ImageView;
 
 import cn.mtjsoft.www.shapeview.util.GradientDrawableUtil;
 
 /**
  * 实现自定义圆角背景
  */
-public class ShapeTextView extends AppCompatTextView {
+public class ShapeImageView extends ImageView {
 
     //自定背景边框Drawable
     private GradientDrawable gradientDrawable;
@@ -29,15 +29,15 @@ public class ShapeTextView extends AppCompatTextView {
     private int bottomLeftRadius;
     private int bottomRightRadius;
 
-    public ShapeTextView(Context context) {
+    public ShapeImageView(Context context) {
         this(context, null);
     }
 
-    public ShapeTextView(Context context, AttributeSet attrs) {
+    public ShapeImageView(Context context, AttributeSet attrs) {
         this(context, attrs, 0);
     }
 
-    public ShapeTextView(Context context, AttributeSet attrs, int defStyleAttr) {
+    public ShapeImageView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         init(context, attrs);
         setCustomBackground();
@@ -50,7 +50,7 @@ public class ShapeTextView extends AppCompatTextView {
      * @param attrs
      */
     private void init(Context context, AttributeSet attrs) {
-        TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.ShapeTextView);
+        TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.ShapeImageView);
         // 填充以及边框
         solidColor = ta.getColor(R.styleable.ShapeTextView_solidColor, Color.TRANSPARENT);
         strokeColor = ta.getColor(R.styleable.ShapeTextView_strokeColor, Color.TRANSPARENT);

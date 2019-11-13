@@ -4,15 +4,15 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.graphics.drawable.GradientDrawable;
-import android.support.v7.widget.AppCompatTextView;
 import android.util.AttributeSet;
+import android.widget.LinearLayout;
 
 import cn.mtjsoft.www.shapeview.util.GradientDrawableUtil;
 
 /**
  * 实现自定义圆角背景
  */
-public class ShapeTextView extends AppCompatTextView {
+public class ShapeLinearLayout extends LinearLayout {
 
     //自定背景边框Drawable
     private GradientDrawable gradientDrawable;
@@ -29,17 +29,18 @@ public class ShapeTextView extends AppCompatTextView {
     private int bottomLeftRadius;
     private int bottomRightRadius;
 
-    public ShapeTextView(Context context) {
+    public ShapeLinearLayout(Context context) {
         this(context, null);
     }
 
-    public ShapeTextView(Context context, AttributeSet attrs) {
+    public ShapeLinearLayout(Context context, AttributeSet attrs) {
         this(context, attrs, 0);
     }
 
-    public ShapeTextView(Context context, AttributeSet attrs, int defStyleAttr) {
+    public ShapeLinearLayout(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         init(context, attrs);
+        //默认背景
         setCustomBackground();
     }
 
@@ -50,17 +51,17 @@ public class ShapeTextView extends AppCompatTextView {
      * @param attrs
      */
     private void init(Context context, AttributeSet attrs) {
-        TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.ShapeTextView);
+        TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.ShapeLinearLayout);
         // 填充以及边框
-        solidColor = ta.getColor(R.styleable.ShapeTextView_solidColor, Color.TRANSPARENT);
-        strokeColor = ta.getColor(R.styleable.ShapeTextView_strokeColor, Color.TRANSPARENT);
-        strokeWidth = ta.getDimensionPixelSize(R.styleable.ShapeTextView_strokeWidth, 0);
+        solidColor = ta.getColor(R.styleable.ShapeLinearLayout_solidColor, Color.TRANSPARENT);
+        strokeColor = ta.getColor(R.styleable.ShapeLinearLayout_strokeColor, Color.TRANSPARENT);
+        strokeWidth = ta.getDimensionPixelSize(R.styleable.ShapeLinearLayout_strokeWidth, 0);
         //四个角单独设置会覆盖radius设置
-        radius = ta.getDimensionPixelSize(R.styleable.ShapeTextView_radius, 0);
-        topLeftRadius = ta.getDimensionPixelSize(R.styleable.ShapeTextView_topLeftRadius, radius);
-        topRightRadius = ta.getDimensionPixelSize(R.styleable.ShapeTextView_topRightRadius, radius);
-        bottomLeftRadius = ta.getDimensionPixelSize(R.styleable.ShapeTextView_bottomLeftRadius, radius);
-        bottomRightRadius = ta.getDimensionPixelSize(R.styleable.ShapeTextView_bottomRightRadius, radius);
+        radius = ta.getDimensionPixelSize(R.styleable.ShapeLinearLayout_radius, 0);
+        topLeftRadius = ta.getDimensionPixelSize(R.styleable.ShapeLinearLayout_topLeftRadius, radius);
+        topRightRadius = ta.getDimensionPixelSize(R.styleable.ShapeLinearLayout_topRightRadius, radius);
+        bottomLeftRadius = ta.getDimensionPixelSize(R.styleable.ShapeLinearLayout_bottomLeftRadius, radius);
+        bottomRightRadius = ta.getDimensionPixelSize(R.styleable.ShapeLinearLayout_bottomRightRadius, radius);
         ta.recycle();
     }
 

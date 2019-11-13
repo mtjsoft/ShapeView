@@ -41,13 +41,7 @@ public class ShapeEditText extends AppCompatEditText {
         super(context, attrs, defStyleAttr);
         init(context, attrs);
         //默认背景
-        gradientDrawable = GradientDrawableUtil.init().getNeedDrawable(new float[]{topLeftRadius, topLeftRadius, topRightRadius, topRightRadius,
-                        bottomRightRadius, bottomRightRadius, bottomLeftRadius, bottomLeftRadius},
-                solidColor, strokeWidth, strokeColor);
-        this.setBackground(gradientDrawable);
-        this.setFocusable(true);
-        this.setFocusableInTouchMode(true);
-        this.setClickable(true);
+        setCustomBackground();
     }
 
     /**
@@ -69,5 +63,47 @@ public class ShapeEditText extends AppCompatEditText {
         bottomLeftRadius = ta.getDimensionPixelSize(R.styleable.ShapeEditText_bottomLeftRadius, radius);
         bottomRightRadius = ta.getDimensionPixelSize(R.styleable.ShapeEditText_bottomRightRadius, radius);
         ta.recycle();
+    }
+
+    public void setSolidColor(int solidColor) {
+        this.solidColor = solidColor;
+    }
+
+    public void setStrokeColor(int strokeColor) {
+        this.strokeColor = strokeColor;
+    }
+
+    public void setStrokeWidth(int strokeWidth) {
+        this.strokeWidth = strokeWidth;
+    }
+
+    public void setRadius(int radius) {
+        this.radius = radius;
+    }
+
+    public void setTopLeftRadius(int topLeftRadius) {
+        this.topLeftRadius = topLeftRadius;
+    }
+
+    public void setTopRightRadius(int topRightRadius) {
+        this.topRightRadius = topRightRadius;
+    }
+
+    public void setBottomLeftRadius(int bottomLeftRadius) {
+        this.bottomLeftRadius = bottomLeftRadius;
+    }
+
+    public void setBottomRightRadius(int bottomRightRadius) {
+        this.bottomRightRadius = bottomRightRadius;
+    }
+
+    public void setCustomBackground() {
+        //默认背景
+        gradientDrawable = GradientDrawableUtil.init().getNeedDrawable(new float[]{topLeftRadius, topLeftRadius, topRightRadius, topRightRadius,
+                        bottomRightRadius, bottomRightRadius, bottomLeftRadius, bottomLeftRadius},
+                solidColor, strokeWidth, strokeColor);
+        this.setBackground(gradientDrawable);
+        this.setFocusable(true);
+        this.setFocusableInTouchMode(true);
     }
 }
