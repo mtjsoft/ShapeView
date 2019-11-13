@@ -1,7 +1,7 @@
 
 # ShapeView组件：
 
-自定义带圆角背景的ShapeTextView、ShapeEditText；
+自定义带圆角背景的ShapeTextView、ShapeEditText、ShapeImageView、ShapeLinearLayout、ShapeRelativeLayout；
 
 自定义根据状态切换背景色、字体色的ShapeCheckBox、ShapeRadioButton；
 
@@ -32,7 +32,7 @@ allprojects {
 
 ```
 dependencies {
-	        implementation 'com.github.mtjsoft:ShapeView:v1.0.0'
+	        implementation 'com.github.mtjsoft:ShapeView:v1.1.0'
 	}
 ```
 
@@ -144,6 +144,13 @@ dependencies {
 ```
 
 # 4、GridPager组件的版本及属性说明
+
+V1.1.0
+--------------------------
+
+1.1.0说明 | 备注
+------------- | ------------- 
+新增了代码中动态设置的set方法 | 动态设置完属性后，setCustomBackground()展示
 
 V1.0.0
 --------------------------
