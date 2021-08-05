@@ -6,12 +6,9 @@ import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.graphics.drawable.GradientDrawable;
 import android.graphics.drawable.StateListDrawable;
-import android.support.v7.widget.AppCompatCheckBox;
 import android.util.AttributeSet;
-import android.util.Log;
-import android.view.View;
-import android.widget.CompoundButton;
 
+import androidx.appcompat.widget.AppCompatCheckBox;
 import cn.mtjsoft.www.shapeview.util.GradientDrawableUtil;
 
 /**

@@ -159,4 +159,38 @@
         <attr name="bottomLeftRadius" />
         <attr name="bottomRightRadius" />
     </declare-styleable>
+
+    <!--自定义ShapeConstraintLayout-->
+    <declare-styleable name="ShapeConstraintLayout">
+        <!--填充色-->
+        <attr name="solidColor" />
+        <!--边框色-->
+        <attr name="strokeColor" />
+        <!--边框宽度-->
+        <attr name="strokeWidth" />
+        <!--圆角弧度-->
+        <attr name="radius" />
+        <!--四个角的圆角弧度-->
+        <attr name="topLeftRadius" />
+        <attr name="topRightRadius" />
+        <attr name="bottomLeftRadius" />
+        <attr name="bottomRightRadius" />
+    </declare-styleable>
+
+    <!--自定义ShapeFrameLayout-->
+    <declare-styleable name="ShapeFrameLayout">
+        <!--填充色-->
+        <attr name="solidColor" />
+        <!--边框色-->
+        <attr name="strokeColor" />
+        <!--边框宽度-->
+        <attr name="strokeWidth" />
+        <!--圆角弧度-->
+        <attr name="radius" />
+        <!--四个角的圆角弧度-->
+        <attr name="topLeftRadius" />
+        <attr name="topRightRadius" />
+        <attr name="bottomLeftRadius" />
+        <attr name="bottomRightRadius" />
+    </declare-styleable>
 </resources>

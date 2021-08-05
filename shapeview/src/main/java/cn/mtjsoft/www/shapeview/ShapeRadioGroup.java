@@ -5,62 +5,63 @@ import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.graphics.drawable.GradientDrawable;
 import android.util.AttributeSet;
+import android.widget.RadioGroup;
 
-import androidx.appcompat.widget.AppCompatTextView;
 import cn.mtjsoft.www.shapeview.util.GradientDrawableUtil;
 
 /**
  * 实现自定义圆角背景
  */
-public class ShapeTextView extends AppCompatTextView {
-
+public class ShapeRadioGroup extends RadioGroup {
     //自定背景边框Drawable
     private GradientDrawable gradientDrawable;
+
     //填充色
     private int solidColor = 0;
+
     //边框色
     private int strokeColor = 0;
+
     //边框宽度
     private int strokeWidth = 0;
+
     //四个角的弧度
     private int radius;
+
     private int topLeftRadius;
+
     private int topRightRadius;
+
     private int bottomLeftRadius;
+
     private int bottomRightRadius;
 
-    public ShapeTextView(Context context) {
+    public ShapeRadioGroup(Context context) {
         this(context, null);
     }
 
-    public ShapeTextView(Context context, AttributeSet attrs) {
-        this(context, attrs, 0);
-    }
-
-    public ShapeTextView(Context context, AttributeSet attrs, int defStyleAttr) {
-        super(context, attrs, defStyleAttr);
+    public ShapeRadioGroup(Context context, AttributeSet attrs) {
+        super(context, attrs);
         init(context, attrs);
+        //默认背景
         setCustomBackground();
     }
 
     /**
      * 初始化参数
-     *
-     * @param context
-     * @param attrs
      */
     private void init(Context context, AttributeSet attrs) {
-        TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.ShapeTextView);
+        TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.ShapeFrameLayout);
         // 填充以及边框
-        solidColor = ta.getColor(R.styleable.ShapeTextView_solidColor, Color.TRANSPARENT);
-        strokeColor = ta.getColor(R.styleable.ShapeTextView_strokeColor, Color.TRANSPARENT);
-        strokeWidth = ta.getDimensionPixelSize(R.styleable.ShapeTextView_strokeWidth, 0);
+        solidColor = ta.getColor(R.styleable.ShapeRelativeLayout_solidColor, Color.TRANSPARENT);
+        strokeColor = ta.getColor(R.styleable.ShapeRelativeLayout_strokeColor, Color.TRANSPARENT);
+        strokeWidth = ta.getDimensionPixelSize(R.styleable.ShapeRelativeLayout_strokeWidth, 0);
         //四个角单独设置会覆盖radius设置
-        radius = ta.getDimensionPixelSize(R.styleable.ShapeTextView_radius, 0);
-        topLeftRadius = ta.getDimensionPixelSize(R.styleable.ShapeTextView_topLeftRadius, radius);
-        topRightRadius = ta.getDimensionPixelSize(R.styleable.ShapeTextView_topRightRadius, radius);
-        bottomLeftRadius = ta.getDimensionPixelSize(R.styleable.ShapeTextView_bottomLeftRadius, radius);
-        bottomRightRadius = ta.getDimensionPixelSize(R.styleable.ShapeTextView_bottomRightRadius, radius);
+        radius = ta.getDimensionPixelSize(R.styleable.ShapeRelativeLayout_radius, 0);
+        topLeftRadius = ta.getDimensionPixelSize(R.styleable.ShapeRelativeLayout_topLeftRadius, radius);
+        topRightRadius = ta.getDimensionPixelSize(R.styleable.ShapeRelativeLayout_topRightRadius, radius);
+        bottomLeftRadius = ta.getDimensionPixelSize(R.styleable.ShapeRelativeLayout_bottomLeftRadius, radius);
+        bottomRightRadius = ta.getDimensionPixelSize(R.styleable.ShapeRelativeLayout_bottomRightRadius, radius);
         ta.recycle();
     }
 
@@ -98,9 +99,10 @@ public class ShapeTextView extends AppCompatTextView {
 
     public void setCustomBackground() {
         //默认背景
-        gradientDrawable = GradientDrawableUtil.init().getNeedDrawable(new float[]{topLeftRadius, topLeftRadius, topRightRadius, topRightRadius,
-                        bottomRightRadius, bottomRightRadius, bottomLeftRadius, bottomLeftRadius},
-                solidColor, strokeWidth, strokeColor);
+        gradientDrawable = GradientDrawableUtil.init().getNeedDrawable(new float[] {
+            topLeftRadius, topLeftRadius, topRightRadius, topRightRadius, bottomRightRadius, bottomRightRadius, bottomLeftRadius,
+            bottomLeftRadius
+        }, solidColor, strokeWidth, strokeColor);
         this.setBackground(gradientDrawable);
         this.setFocusable(false);
         this.setFocusableInTouchMode(false);

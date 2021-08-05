@@ -4,12 +4,11 @@ import android.content.Context;
 import android.content.res.ColorStateList;
 import android.content.res.TypedArray;
 import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.GradientDrawable;
 import android.graphics.drawable.StateListDrawable;
-import android.support.v7.widget.AppCompatRadioButton;
 import android.util.AttributeSet;
 
+import androidx.appcompat.widget.AppCompatRadioButton;
 import cn.mtjsoft.www.shapeview.util.GradientDrawableUtil;
 
 /**

@@ -5,14 +5,14 @@ import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.graphics.drawable.GradientDrawable;
 import android.util.AttributeSet;
-import android.widget.ImageView;
 
+import androidx.appcompat.widget.AppCompatImageView;
 import cn.mtjsoft.www.shapeview.util.GradientDrawableUtil;
 
 /**
  * 实现自定义圆角背景
  */
-public class ShapeImageView extends ImageView {
+public class ShapeImageView extends AppCompatImageView {
 
     //自定背景边框Drawable
     private GradientDrawable gradientDrawable;

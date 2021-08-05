@@ -1,9 +1,9 @@
 package cn.mtjsoft.www.shapeviewdemo;
 
 import android.os.Bundle;
-import android.support.v4.content.ContextCompat;
-import android.support.v7.app.AppCompatActivity;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 import cn.mtjsoft.www.shapeview.ShapeTextView;
 
 public class MainActivity extends AppCompatActivity {
