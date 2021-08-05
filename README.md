@@ -32,9 +32,11 @@ allprojects {
 
 ```
 dependencies {
-	        implementation 'com.github.mtjsoft:ShapeView:v1.1.0'
+	        implementation 'com.github.mtjsoft:ShapeView:v2.0.0'
 	}
 ```
+
+[![](https://jitpack.io/v/mtjsoft/ShapeView.svg)](https://jitpack.io/#mtjsoft/ShapeView)
 
 
 # 3、在需要使用的布局xml中添加ShapeView组件，根据需要设置相关属性
@@ -144,6 +146,10 @@ dependencies {
 ```
 
 # 4、GridPager组件的版本及属性说明
+
+V2.0.0
+--------------------------
+- 升AndroidX
 
 V1.1.0
 --------------------------
