@@ -37,12 +37,14 @@
             android:layout_margin="10dp"
             android:gravity="center"
             android:padding="10dp"
-            android:text="ShapeTextView4个圆角、边框"
+            android:text="ShapeTextView4个圆角、虚线边框"
             android:textColor="@color/colorAccent"
             android:textSize="14sp"
             app:radius="5dp"
             app:strokeColor="@color/colorAccent"
-            app:strokeWidth="1dp" />
+            app:strokeWidth="1dp"
+            app:dashWidth="10dp"
+            app:dashGap="5dp"/>
 
         <cn.mtjsoft.www.shapeview.ShapeTextView
             android:layout_width="match_parent"
@@ -58,23 +60,90 @@
             app:strokeWidth="1dp"
             app:topRightRadius="10dp" />
 
-        <cn.mtjsoft.www.shapeview.ShapeTextView
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:layout_margin="10dp"
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="圆形填充"
-            android:textColor="@android:color/white"
-            android:textSize="14sp"
-            app:radius="40dp"
-            app:solidColor="@color/colorAccent" />
+            android:padding="10dp"
+            android:text="2、渐变色示例"
+            android:textColor="@android:color/black" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <cn.mtjsoft.www.shapeview.ShapeTextView
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_margin="10dp"
+                android:gravity="center"
+                android:text="圆形填充"
+                android:textColor="@android:color/white"
+                android:textSize="14sp"
+                app:radius="40dp"
+                app:solidColor="@color/colorAccent" />
+
+            <cn.mtjsoft.www.shapeview.ShapeTextView
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:gravity="center"
+                android:padding="10dp"
+                android:text=""
+                android:textColor="@android:color/white"
+                android:textSize="14sp"
+                app:strokeColor="@color/colorAccent"
+                app:strokeWidth="1dp"
+                app:orientation="2"
+                app:startColor="@color/colorAccent"
+                app:endColor="@color/colorPrimary"
+                app:radius="5dp" />
+
+            <cn.mtjsoft.www.shapeview.ShapeTextView
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_marginEnd="10dp"
+                android:gravity="center"
+                android:text=""
+                android:textColor="@android:color/white"
+                android:textSize="14sp"
+                app:strokeColor="@color/colorAccent"
+                app:strokeWidth="1dp"
+                app:shape="1"
+                app:gradientType="1"
+                app:gradientRadius="150f"
+                app:startColor="@color/colorAccent"
+                app:centerColor="@color/colorPrimaryDark"
+                app:endColor="@color/colorPrimary"
+                app:radius="5dp" />
+
+            <cn.mtjsoft.www.shapeview.ShapeTextView
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_marginEnd="10dp"
+                android:gravity="center"
+                android:text=""
+                android:textColor="@android:color/white"
+                android:textSize="14sp"
+                app:strokeColor="@color/colorAccent"
+                app:strokeWidth="1dp"
+                app:shape="0"
+                app:gradientType="2"
+                app:gradientRadius="150f"
+                app:startColor="@color/colorAccent"
+                app:centerColor="@color/colorPrimaryDark"
+                app:endColor="@color/colorPrimary"
+                app:radius="5dp" />
+        </LinearLayout>
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
             android:padding="10dp"
-            android:text="2、ShapeEditText示例"
+            android:text="3、ShapeEditText示例"
             android:textColor="@android:color/black" />
 
         <cn.mtjsoft.www.shapeview.ShapeEditText
@@ -94,7 +163,7 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:padding="10dp"
-            android:text="3、ShapeCheckBox示例"
+            android:text="4、ShapeCheckBox示例"
             android:textColor="@android:color/black" />
 
         <cn.mtjsoft.www.shapeview.ShapeCheckBox
@@ -104,21 +173,21 @@
             android:gravity="center"
             android:text="ShapeCheckBox，根据选中状态切换背景色、字体色"
             android:textSize="12sp"
-            app:radius="5dp"
-            app:strokeWidth="1dp"
-            app:strokeColor="@color/colorAccent"
             app:openSelector="true"
+            app:radius="5dp"
             app:solidSelectColor="@android:color/darker_gray"
+            app:strokeColor="@color/colorAccent"
             app:strokeSelectColor="@android:color/darker_gray"
+            app:strokeWidth="1dp"
             app:textNormalColor="@color/colorPrimary"
-            app:textSelectColor="@color/colorAccent"/>
+            app:textSelectColor="@color/colorAccent" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
             android:padding="10dp"
-            android:text="4、ShapeRadioButton示例"
+            android:text="5、ShapeRadioButton示例"
             android:textColor="@android:color/black" />
 
         <RadioGroup
@@ -131,33 +200,33 @@
                 android:layout_width="60dp"
                 android:layout_height="40dp"
                 android:gravity="center"
-                android:textSize="12sp"
                 android:text="1"
-                app:topLeftRadius="20dp"
+                android:textSize="12sp"
                 app:bottomLeftRadius="20dp"
-                app:strokeWidth="1dp"
-                app:strokeColor="@color/colorAccent"
                 app:openSelector="true"
                 app:solidSelectColor="@color/colorAccent"
+                app:strokeColor="@color/colorAccent"
                 app:strokeSelectColor="@color/colorAccent"
+                app:strokeWidth="1dp"
                 app:textNormalColor="@color/colorAccent"
-                app:textSelectColor="@android:color/white"/>
+                app:textSelectColor="@android:color/white"
+                app:topLeftRadius="20dp" />
 
             <cn.mtjsoft.www.shapeview.ShapeRadioButton
                 android:layout_width="60dp"
                 android:layout_height="40dp"
                 android:gravity="center"
-                android:textSize="12sp"
                 android:text="2"
-                app:topRightRadius="20dp"
+                android:textSize="12sp"
                 app:bottomRightRadius="20dp"
-                app:strokeWidth="1dp"
-                app:strokeColor="@color/colorAccent"
                 app:openSelector="true"
                 app:solidSelectColor="@color/colorAccent"
+                app:strokeColor="@color/colorAccent"
                 app:strokeSelectColor="@color/colorAccent"
+                app:strokeWidth="1dp"
                 app:textNormalColor="@color/colorAccent"
-                app:textSelectColor="@android:color/white"/>
+                app:textSelectColor="@android:color/white"
+                app:topRightRadius="20dp" />
         </RadioGroup>
     </LinearLayout>
 </androidx.core.widget.NestedScrollView>

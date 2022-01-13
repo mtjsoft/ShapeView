@@ -1,5 +1,6 @@
 package cn.mtjsoft.www.shapeview;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Color;
@@ -7,7 +8,6 @@ import android.graphics.drawable.GradientDrawable;
 import android.util.AttributeSet;
 
 import androidx.appcompat.widget.AppCompatTextView;
-import cn.mtjsoft.www.shapeview.imp.BuilderImp;
 import cn.mtjsoft.www.shapeview.util.GradientDrawableUtil;
 
 /**
@@ -17,25 +17,7 @@ public class ShapeTextView extends AppCompatTextView {
     //自定背景边框Drawable
     private GradientDrawable gradientDrawable;
 
-    //填充色
-    private int solidColor = 0;
-
-    //边框色
-    private int strokeColor = 0;
-
-    //边框宽度
-    private int strokeWidth = 0;
-
-    //四个角的弧度
-    private int radius;
-
-    private int topLeftRadius;
-
-    private int topRightRadius;
-
-    private int bottomLeftRadius;
-
-    private int bottomRightRadius;
+    private CustomBuilder builder;
 
     public ShapeTextView(Context context) {
         this(context, null);
@@ -48,182 +30,82 @@ public class ShapeTextView extends AppCompatTextView {
     public ShapeTextView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         init(context, attrs);
-        setCustomBackground();
     }
 
     /**
      * 初始化参数
      */
     private void init(Context context, AttributeSet attrs) {
-        TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.ShapeTextView);
+        TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.ShapeView);
+        int shape = ta.getInt(R.styleable.ShapeView_shape, GradientDrawable.RECTANGLE);
+        if (shape > GradientDrawable.RING) {
+            shape = GradientDrawable.RECTANGLE;
+        }
+        // 渐变
+        int startColor = ta.getColor(R.styleable.ShapeView_startColor, 0);
+        int centerColor = ta.getColor(R.styleable.ShapeView_centerColor, 0);
+        int endColor = ta.getColor(R.styleable.ShapeView_endColor, 0);
+        int startSelectColor = ta.getColor(R.styleable.ShapeView_startSelectColor, 0);
+        int centerSelectColor = ta.getColor(R.styleable.ShapeView_centerSelectColor, 0);
+        int endSelectColor = ta.getColor(R.styleable.ShapeView_endSelectColor, 0);
+        int orientation = ta.getInt(R.styleable.ShapeView_orientation, 6);
+        if (orientation > 7) {
+            orientation = 6;
+        }
+        int gradientType = ta.getInt(R.styleable.ShapeView_gradientType, GradientDrawable.LINEAR_GRADIENT);
+        if (gradientType > GradientDrawable.SWEEP_GRADIENT) {
+            gradientType = GradientDrawable.LINEAR_GRADIENT;
+        }
+        float gradientRadius = ta.getFloat(R.styleable.ShapeView_gradientRadius, 0);
         // 填充以及边框
-        solidColor = ta.getColor(R.styleable.ShapeTextView_solidColor, Color.TRANSPARENT);
-        strokeColor = ta.getColor(R.styleable.ShapeTextView_strokeColor, Color.TRANSPARENT);
-        strokeWidth = ta.getDimensionPixelSize(R.styleable.ShapeTextView_strokeWidth, 0);
+        int solidColor = ta.getColor(R.styleable.ShapeView_solidColor, Color.TRANSPARENT);
+        int strokeColor = ta.getColor(R.styleable.ShapeView_strokeColor, Color.TRANSPARENT);
+        int strokeWidth = ta.getDimensionPixelSize(R.styleable.ShapeView_strokeWidth, 0);
+        int dashWidth = ta.getDimensionPixelSize(R.styleable.ShapeView_dashWidth, 0);
+        int dashGap = ta.getDimensionPixelSize(R.styleable.ShapeView_dashGap, 0);
         //四个角单独设置会覆盖radius设置
-        radius = ta.getDimensionPixelSize(R.styleable.ShapeTextView_radius, 0);
-        topLeftRadius = ta.getDimensionPixelSize(R.styleable.ShapeTextView_topLeftRadius, radius);
-        topRightRadius = ta.getDimensionPixelSize(R.styleable.ShapeTextView_topRightRadius, radius);
-        bottomLeftRadius = ta.getDimensionPixelSize(R.styleable.ShapeTextView_bottomLeftRadius, radius);
-        bottomRightRadius = ta.getDimensionPixelSize(R.styleable.ShapeTextView_bottomRightRadius, radius);
+        int radius = ta.getDimensionPixelSize(R.styleable.ShapeView_radius, 0);
+        int topLeftRadius = ta.getDimensionPixelSize(R.styleable.ShapeView_topLeftRadius, radius);
+        int topRightRadius = ta.getDimensionPixelSize(R.styleable.ShapeView_topRightRadius, radius);
+        int bottomLeftRadius = ta.getDimensionPixelSize(R.styleable.ShapeView_bottomLeftRadius, radius);
+        int bottomRightRadius = ta.getDimensionPixelSize(R.styleable.ShapeView_bottomRightRadius, radius);
         ta.recycle();
+        setBuilder(new CustomBuilder()
+                .setShape(shape)
+                .setColors(startColor, centerColor, endColor)
+                .setSelectColors(startSelectColor, centerSelectColor, endSelectColor)
+                .setOrientationById(orientation)
+                .setGradientType(gradientType)
+                .setGradientRadius(gradientRadius)
+                .setSolidColor(solidColor)
+                .setStrokeColor(strokeColor)
+                .setStrokeWidth(strokeWidth)
+                .setDashWidth(dashWidth)
+                .setDashGap(dashGap)
+                .setRadius(radius)
+                .setTopLeftRadius(topLeftRadius)
+                .setTopRightRadius(topRightRadius)
+                .setBottomLeftRadius(bottomLeftRadius)
+                .setBottomRightRadius(bottomRightRadius)
+        );
     }
 
-    public static class Builder implements BuilderImp {
-        //填充色
-        private int solidColor = 0;
-
-        //边框色
-        private int strokeColor = 0;
-
-        //边框宽度
-        private int strokeWidth = 0;
-
-        //四个角的弧度
-        private int radius;
-
-        private int topLeftRadius;
-
-        private int topRightRadius;
-
-        private int bottomLeftRadius;
-
-        private int bottomRightRadius;
-
-        private boolean openSelector;
-
-        private int textNormalColor;
-
-        private int textSelectColor;
-
-        private int solidSelectColor;
-
-        private int strokeSelectColor;
-
-        public Builder() {
-        }
-
-        @Override
-        public BuilderImp setSolidColor(int solidColor) {
-            this.solidColor = solidColor;
-            return this;
-        }
-
-        @Override
-        public BuilderImp setStrokeColor(int strokeColor) {
-            this.strokeColor = strokeColor;
-            return this;
-        }
-
-        @Override
-        public BuilderImp setStrokeWidth(int strokeWidth) {
-            this.strokeWidth = strokeWidth;
-            return this;
-        }
-
-        @Override
-        public BuilderImp setRadius(int radius) {
-            this.radius = radius;
-            return this;
-        }
-
-        @Override
-        public BuilderImp setTopLeftRadius(int topLeftRadius) {
-            this.topLeftRadius = topLeftRadius;
-            return this;
-        }
-
-        @Override
-        public BuilderImp setTopRightRadius(int topRightRadius) {
-            this.topRightRadius = topRightRadius;
-            return this;
-        }
-
-        @Override
-        public BuilderImp setBottomLeftRadius(int bottomLeftRadius) {
-            this.bottomLeftRadius = bottomLeftRadius;
-            return this;
-        }
-
-        @Override
-        public BuilderImp setBottomRightRadius(int bottomRightRadius) {
-            this.bottomRightRadius = bottomRightRadius;
-            return this;
-        }
-
-        @Override
-        public BuilderImp setOpenSelector(boolean openSelector) {
-            this.openSelector = openSelector;
-            return this;
-        }
-
-        @Override
-        public BuilderImp setTextNormalColor(int textNormalColor) {
-            this.textNormalColor = textNormalColor;
-            return this;
-        }
-
-        @Override
-        public BuilderImp setTextSelectColor(int textSelectColor) {
-            this.textSelectColor = textSelectColor;
-            return this;
-        }
-
-        @Override
-        public BuilderImp setSolidSelectColor(int solidSelectColor) {
-            this.solidSelectColor = solidSelectColor;
-            return this;
-        }
-
-        @Override
-        public BuilderImp setStrokeSelectColor(int strokeSelectColor) {
-            this.strokeSelectColor = strokeSelectColor;
-            return this;
-        }
-    }
-
-    public void setBuilder(Builder builder) {
+    public void setBuilder(CustomBuilder builder) {
+        this.builder = builder;
         setCustomBackground();
     }
 
-    public void setSolidColor(int solidColor) {
-        this.solidColor = solidColor;
+    public CustomBuilder getBuilder() {
+        return builder;
     }
 
-    public void setStrokeColor(int strokeColor) {
-        this.strokeColor = strokeColor;
+    public GradientDrawable getGradientDrawable() {
+        return gradientDrawable;
     }
 
-    public void setStrokeWidth(int strokeWidth) {
-        this.strokeWidth = strokeWidth;
-    }
-
-    public void setRadius(int radius) {
-        this.radius = radius;
-    }
-
-    public void setTopLeftRadius(int topLeftRadius) {
-        this.topLeftRadius = topLeftRadius;
-    }
-
-    public void setTopRightRadius(int topRightRadius) {
-        this.topRightRadius = topRightRadius;
-    }
-
-    public void setBottomLeftRadius(int bottomLeftRadius) {
-        this.bottomLeftRadius = bottomLeftRadius;
-    }
-
-    public void setBottomRightRadius(int bottomRightRadius) {
-        this.bottomRightRadius = bottomRightRadius;
-    }
-
-    public void setCustomBackground() {
+    private void setCustomBackground() {
         //默认背景
-        gradientDrawable = GradientDrawableUtil.init().getNeedDrawable(new float[] {
-            topLeftRadius, topLeftRadius, topRightRadius, topRightRadius, bottomRightRadius, bottomRightRadius, bottomLeftRadius,
-            bottomLeftRadius
-        }, solidColor, strokeWidth, strokeColor);
+        gradientDrawable = GradientDrawableUtil.init().getNormalDrawable(builder);
         this.setBackground(gradientDrawable);
         this.setFocusable(false);
         this.setFocusableInTouchMode(false);

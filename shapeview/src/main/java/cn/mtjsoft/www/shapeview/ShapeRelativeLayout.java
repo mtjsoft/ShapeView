@@ -1,5 +1,6 @@
 package cn.mtjsoft.www.shapeview;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Color;
@@ -16,18 +17,8 @@ public class ShapeRelativeLayout extends RelativeLayout {
 
     //自定背景边框Drawable
     private GradientDrawable gradientDrawable;
-    //填充色
-    private int solidColor = 0;
-    //边框色
-    private int strokeColor = 0;
-    //边框宽度
-    private int strokeWidth = 0;
-    //四个角的弧度
-    private int radius;
-    private int topLeftRadius;
-    private int topRightRadius;
-    private int bottomLeftRadius;
-    private int bottomRightRadius;
+
+    private CustomBuilder builder;
 
     public ShapeRelativeLayout(Context context) {
         this(context, null);
@@ -40,8 +31,6 @@ public class ShapeRelativeLayout extends RelativeLayout {
     public ShapeRelativeLayout(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         init(context, attrs);
-        //默认背景
-        setCustomBackground();
     }
 
     /**
@@ -51,57 +40,77 @@ public class ShapeRelativeLayout extends RelativeLayout {
      * @param attrs
      */
     private void init(Context context, AttributeSet attrs) {
-        TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.ShapeRelativeLayout);
+        @SuppressLint("CustomViewStyleable")
+        TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.ShapeView);
+        int shape = ta.getInt(R.styleable.ShapeView_shape, GradientDrawable.RECTANGLE);
+        if (shape > GradientDrawable.RING) {
+            shape = GradientDrawable.RECTANGLE;
+        }
+        // 渐变
+        int startColor = ta.getColor(R.styleable.ShapeView_startColor, 0);
+        int centerColor = ta.getColor(R.styleable.ShapeView_centerColor, 0);
+        int endColor = ta.getColor(R.styleable.ShapeView_endColor, 0);
+        int startSelectColor = ta.getColor(R.styleable.ShapeView_startSelectColor, 0);
+        int centerSelectColor = ta.getColor(R.styleable.ShapeView_centerSelectColor, 0);
+        int endSelectColor = ta.getColor(R.styleable.ShapeView_endSelectColor, 0);
+        int orientation = ta.getInt(R.styleable.ShapeView_orientation, 6);
+        if (orientation > 7) {
+            orientation = 6;
+        }
+        int gradientType = ta.getInt(R.styleable.ShapeView_gradientType, GradientDrawable.LINEAR_GRADIENT);
+        if (gradientType > GradientDrawable.SWEEP_GRADIENT) {
+            gradientType = GradientDrawable.LINEAR_GRADIENT;
+        }
+        float gradientRadius = ta.getFloat(R.styleable.ShapeView_gradientRadius, 0);
         // 填充以及边框
-        solidColor = ta.getColor(R.styleable.ShapeRelativeLayout_solidColor, Color.TRANSPARENT);
-        strokeColor = ta.getColor(R.styleable.ShapeRelativeLayout_strokeColor, Color.TRANSPARENT);
-        strokeWidth = ta.getDimensionPixelSize(R.styleable.ShapeRelativeLayout_strokeWidth, 0);
+        int solidColor = ta.getColor(R.styleable.ShapeView_solidColor, Color.TRANSPARENT);
+        int strokeColor = ta.getColor(R.styleable.ShapeView_strokeColor, Color.TRANSPARENT);
+        int strokeWidth = ta.getDimensionPixelSize(R.styleable.ShapeView_strokeWidth, 0);
+        int dashWidth = ta.getDimensionPixelSize(R.styleable.ShapeView_dashWidth, 0);
+        int dashGap = ta.getDimensionPixelSize(R.styleable.ShapeView_dashGap, 0);
         //四个角单独设置会覆盖radius设置
-        radius = ta.getDimensionPixelSize(R.styleable.ShapeRelativeLayout_radius, 0);
-        topLeftRadius = ta.getDimensionPixelSize(R.styleable.ShapeRelativeLayout_topLeftRadius, radius);
-        topRightRadius = ta.getDimensionPixelSize(R.styleable.ShapeRelativeLayout_topRightRadius, radius);
-        bottomLeftRadius = ta.getDimensionPixelSize(R.styleable.ShapeRelativeLayout_bottomLeftRadius, radius);
-        bottomRightRadius = ta.getDimensionPixelSize(R.styleable.ShapeRelativeLayout_bottomRightRadius, radius);
+        int radius = ta.getDimensionPixelSize(R.styleable.ShapeView_radius, 0);
+        int topLeftRadius = ta.getDimensionPixelSize(R.styleable.ShapeView_topLeftRadius, radius);
+        int topRightRadius = ta.getDimensionPixelSize(R.styleable.ShapeView_topRightRadius, radius);
+        int bottomLeftRadius = ta.getDimensionPixelSize(R.styleable.ShapeView_bottomLeftRadius, radius);
+        int bottomRightRadius = ta.getDimensionPixelSize(R.styleable.ShapeView_bottomRightRadius, radius);
         ta.recycle();
+        setBuilder(new CustomBuilder()
+                .setShape(shape)
+                .setColors(startColor, centerColor, endColor)
+                .setSelectColors(startSelectColor, centerSelectColor, endSelectColor)
+                .setOrientationById(orientation)
+                .setGradientType(gradientType)
+                .setGradientRadius(gradientRadius)
+                .setSolidColor(solidColor)
+                .setStrokeColor(strokeColor)
+                .setStrokeWidth(strokeWidth)
+                .setDashWidth(dashWidth)
+                .setDashGap(dashGap)
+                .setRadius(radius)
+                .setTopLeftRadius(topLeftRadius)
+                .setTopRightRadius(topRightRadius)
+                .setBottomLeftRadius(bottomLeftRadius)
+                .setBottomRightRadius(bottomRightRadius)
+        );
     }
 
-    public void setSolidColor(int solidColor) {
-        this.solidColor = solidColor;
+    public void setBuilder(CustomBuilder builder) {
+        this.builder = builder;
+        setCustomBackground();
     }
 
-    public void setStrokeColor(int strokeColor) {
-        this.strokeColor = strokeColor;
+    public CustomBuilder getBuilder() {
+        return builder;
     }
 
-    public void setStrokeWidth(int strokeWidth) {
-        this.strokeWidth = strokeWidth;
+    public GradientDrawable getGradientDrawable() {
+        return gradientDrawable;
     }
 
-    public void setRadius(int radius) {
-        this.radius = radius;
-    }
-
-    public void setTopLeftRadius(int topLeftRadius) {
-        this.topLeftRadius = topLeftRadius;
-    }
-
-    public void setTopRightRadius(int topRightRadius) {
-        this.topRightRadius = topRightRadius;
-    }
-
-    public void setBottomLeftRadius(int bottomLeftRadius) {
-        this.bottomLeftRadius = bottomLeftRadius;
-    }
-
-    public void setBottomRightRadius(int bottomRightRadius) {
-        this.bottomRightRadius = bottomRightRadius;
-    }
-
-    public void setCustomBackground() {
+    private void setCustomBackground() {
         //默认背景
-        gradientDrawable = GradientDrawableUtil.init().getNeedDrawable(new float[]{topLeftRadius, topLeftRadius, topRightRadius, topRightRadius,
-                        bottomRightRadius, bottomRightRadius, bottomLeftRadius, bottomLeftRadius},
-                solidColor, strokeWidth, strokeColor);
+        gradientDrawable = GradientDrawableUtil.init().getNormalDrawable(builder);
         this.setBackground(gradientDrawable);
         this.setFocusable(false);
         this.setFocusableInTouchMode(false);
