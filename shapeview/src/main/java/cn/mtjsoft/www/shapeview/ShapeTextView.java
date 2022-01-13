@@ -7,26 +7,34 @@ import android.graphics.drawable.GradientDrawable;
 import android.util.AttributeSet;
 
 import androidx.appcompat.widget.AppCompatTextView;
+import cn.mtjsoft.www.shapeview.imp.BuilderImp;
 import cn.mtjsoft.www.shapeview.util.GradientDrawableUtil;
 
 /**
  * 实现自定义圆角背景
  */
 public class ShapeTextView extends AppCompatTextView {
-
     //自定背景边框Drawable
     private GradientDrawable gradientDrawable;
+
     //填充色
     private int solidColor = 0;
+
     //边框色
     private int strokeColor = 0;
+
     //边框宽度
     private int strokeWidth = 0;
+
     //四个角的弧度
     private int radius;
+
     private int topLeftRadius;
+
     private int topRightRadius;
+
     private int bottomLeftRadius;
+
     private int bottomRightRadius;
 
     public ShapeTextView(Context context) {
@@ -45,9 +53,6 @@ public class ShapeTextView extends AppCompatTextView {
 
     /**
      * 初始化参数
-     *
-     * @param context
-     * @param attrs
      */
     private void init(Context context, AttributeSet attrs) {
         TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.ShapeTextView);
@@ -62,6 +67,123 @@ public class ShapeTextView extends AppCompatTextView {
         bottomLeftRadius = ta.getDimensionPixelSize(R.styleable.ShapeTextView_bottomLeftRadius, radius);
         bottomRightRadius = ta.getDimensionPixelSize(R.styleable.ShapeTextView_bottomRightRadius, radius);
         ta.recycle();
+    }
+
+    public static class Builder implements BuilderImp {
+        //填充色
+        private int solidColor = 0;
+
+        //边框色
+        private int strokeColor = 0;
+
+        //边框宽度
+        private int strokeWidth = 0;
+
+        //四个角的弧度
+        private int radius;
+
+        private int topLeftRadius;
+
+        private int topRightRadius;
+
+        private int bottomLeftRadius;
+
+        private int bottomRightRadius;
+
+        private boolean openSelector;
+
+        private int textNormalColor;
+
+        private int textSelectColor;
+
+        private int solidSelectColor;
+
+        private int strokeSelectColor;
+
+        public Builder() {
+        }
+
+        @Override
+        public BuilderImp setSolidColor(int solidColor) {
+            this.solidColor = solidColor;
+            return this;
+        }
+
+        @Override
+        public BuilderImp setStrokeColor(int strokeColor) {
+            this.strokeColor = strokeColor;
+            return this;
+        }
+
+        @Override
+        public BuilderImp setStrokeWidth(int strokeWidth) {
+            this.strokeWidth = strokeWidth;
+            return this;
+        }
+
+        @Override
+        public BuilderImp setRadius(int radius) {
+            this.radius = radius;
+            return this;
+        }
+
+        @Override
+        public BuilderImp setTopLeftRadius(int topLeftRadius) {
+            this.topLeftRadius = topLeftRadius;
+            return this;
+        }
+
+        @Override
+        public BuilderImp setTopRightRadius(int topRightRadius) {
+            this.topRightRadius = topRightRadius;
+            return this;
+        }
+
+        @Override
+        public BuilderImp setBottomLeftRadius(int bottomLeftRadius) {
+            this.bottomLeftRadius = bottomLeftRadius;
+            return this;
+        }
+
+        @Override
+        public BuilderImp setBottomRightRadius(int bottomRightRadius) {
+            this.bottomRightRadius = bottomRightRadius;
+            return this;
+        }
+
+        @Override
+        public BuilderImp setOpenSelector(boolean openSelector) {
+            this.openSelector = openSelector;
+            return this;
+        }
+
+        @Override
+        public BuilderImp setTextNormalColor(int textNormalColor) {
+            this.textNormalColor = textNormalColor;
+            return this;
+        }
+
+        @Override
+        public BuilderImp setTextSelectColor(int textSelectColor) {
+            this.textSelectColor = textSelectColor;
+            return this;
+        }
+
+        @Override
+        public BuilderImp setSolidSelectColor(int solidSelectColor) {
+            this.solidSelectColor = solidSelectColor;
+            return this;
+        }
+
+        @Override
+        public BuilderImp setStrokeSelectColor(int strokeSelectColor) {
+            this.strokeSelectColor = strokeSelectColor;
+            return this;
+        }
+    }
+
+    public void setBuilder(Builder builder) {
+        setCustomBackground();
     }
 
     public void setSolidColor(int solidColor) {
@@ -98,9 +220,10 @@ public class ShapeTextView extends AppCompatTextView {
 
     public void setCustomBackground() {
         //默认背景
-        gradientDrawable = GradientDrawableUtil.init().getNeedDrawable(new float[]{topLeftRadius, topLeftRadius, topRightRadius, topRightRadius,
-                        bottomRightRadius, bottomRightRadius, bottomLeftRadius, bottomLeftRadius},
-                solidColor, strokeWidth, strokeColor);
+        gradientDrawable = GradientDrawableUtil.init().getNeedDrawable(new float[] {
+            topLeftRadius, topLeftRadius, topRightRadius, topRightRadius, bottomRightRadius, bottomRightRadius, bottomLeftRadius,
+            bottomLeftRadius
+        }, solidColor, strokeWidth, strokeColor);
         this.setBackground(gradientDrawable);
         this.setFocusable(false);
         this.setFocusableInTouchMode(false);
