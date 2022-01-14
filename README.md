@@ -32,7 +32,7 @@ allprojects {
 
 ```
 dependencies {
-	        implementation 'com.github.mtjsoft:ShapeView:v2.0.1'
+	        implementation 'com.github.mtjsoft:ShapeView:v2.0.2'
 	}
 ```
 
@@ -40,6 +40,10 @@ dependencies {
 
 
 # 4、GridPager组件的版本及属性说明
+
+V2.0.2
+--------------------------
+- 修改属性配置
 
 V2.0.1
 --------------------------
