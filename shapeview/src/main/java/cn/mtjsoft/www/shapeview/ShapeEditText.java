@@ -41,39 +41,39 @@ public class ShapeEditText extends AppCompatEditText {
      */
     private void init(Context context, AttributeSet attrs) {
         @SuppressLint("CustomViewStyleable")
-        TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.ShapeView);
-        int shape = ta.getInt(R.styleable.ShapeView_shape, GradientDrawable.RECTANGLE);
+        TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.ShapeEditText);
+        int shape = ta.getInt(R.styleable.ShapeEditText_shape, GradientDrawable.RECTANGLE);
         if (shape > GradientDrawable.RING) {
             shape = GradientDrawable.RECTANGLE;
         }
         // 渐变
-        int startColor = ta.getColor(R.styleable.ShapeView_startColor, 0);
-        int centerColor = ta.getColor(R.styleable.ShapeView_centerColor, 0);
-        int endColor = ta.getColor(R.styleable.ShapeView_endColor, 0);
-        int startSelectColor = ta.getColor(R.styleable.ShapeView_startSelectColor, 0);
-        int centerSelectColor = ta.getColor(R.styleable.ShapeView_centerSelectColor, 0);
-        int endSelectColor = ta.getColor(R.styleable.ShapeView_endSelectColor, 0);
-        int orientation = ta.getInt(R.styleable.ShapeView_orientation, 6);
+        int startColor = ta.getColor(R.styleable.ShapeEditText_startColor, 0);
+        int centerColor = ta.getColor(R.styleable.ShapeEditText_centerColor, 0);
+        int endColor = ta.getColor(R.styleable.ShapeEditText_endColor, 0);
+        int startSelectColor = ta.getColor(R.styleable.ShapeEditText_startSelectColor, 0);
+        int centerSelectColor = ta.getColor(R.styleable.ShapeEditText_centerSelectColor, 0);
+        int endSelectColor = ta.getColor(R.styleable.ShapeEditText_endSelectColor, 0);
+        int orientation = ta.getInt(R.styleable.ShapeEditText_orientation, 6);
         if (orientation > 7) {
             orientation = 6;
         }
-        int gradientType = ta.getInt(R.styleable.ShapeView_gradientType, GradientDrawable.LINEAR_GRADIENT);
+        int gradientType = ta.getInt(R.styleable.ShapeEditText_gradientType, GradientDrawable.LINEAR_GRADIENT);
         if (gradientType > GradientDrawable.SWEEP_GRADIENT) {
             gradientType = GradientDrawable.LINEAR_GRADIENT;
         }
-        float gradientRadius = ta.getFloat(R.styleable.ShapeView_gradientRadius, 0);
+        float gradientRadius = ta.getFloat(R.styleable.ShapeEditText_gradientRadius, 0);
         // 填充以及边框
-        int solidColor = ta.getColor(R.styleable.ShapeView_solidColor, Color.TRANSPARENT);
-        int strokeColor = ta.getColor(R.styleable.ShapeView_strokeColor, Color.TRANSPARENT);
-        int strokeWidth = ta.getDimensionPixelSize(R.styleable.ShapeView_strokeWidth, 0);
-        int dashWidth = ta.getDimensionPixelSize(R.styleable.ShapeView_dashWidth, 0);
-        int dashGap = ta.getDimensionPixelSize(R.styleable.ShapeView_dashGap, 0);
+        int solidColor = ta.getColor(R.styleable.ShapeEditText_solidColor, Color.TRANSPARENT);
+        int strokeColor = ta.getColor(R.styleable.ShapeEditText_strokeColor, Color.TRANSPARENT);
+        int strokeWidth = ta.getDimensionPixelSize(R.styleable.ShapeEditText_strokeWidth, 0);
+        int dashWidth = ta.getDimensionPixelSize(R.styleable.ShapeEditText_dashWidth, 0);
+        int dashGap = ta.getDimensionPixelSize(R.styleable.ShapeEditText_dashGap, 0);
         //四个角单独设置会覆盖radius设置
-        int radius = ta.getDimensionPixelSize(R.styleable.ShapeView_radius, 0);
-        int topLeftRadius = ta.getDimensionPixelSize(R.styleable.ShapeView_topLeftRadius, radius);
-        int topRightRadius = ta.getDimensionPixelSize(R.styleable.ShapeView_topRightRadius, radius);
-        int bottomLeftRadius = ta.getDimensionPixelSize(R.styleable.ShapeView_bottomLeftRadius, radius);
-        int bottomRightRadius = ta.getDimensionPixelSize(R.styleable.ShapeView_bottomRightRadius, radius);
+        int radius = ta.getDimensionPixelSize(R.styleable.ShapeEditText_radius, 0);
+        int topLeftRadius = ta.getDimensionPixelSize(R.styleable.ShapeEditText_topLeftRadius, radius);
+        int topRightRadius = ta.getDimensionPixelSize(R.styleable.ShapeEditText_topRightRadius, radius);
+        int bottomLeftRadius = ta.getDimensionPixelSize(R.styleable.ShapeEditText_bottomLeftRadius, radius);
+        int bottomRightRadius = ta.getDimensionPixelSize(R.styleable.ShapeEditText_bottomRightRadius, radius);
         ta.recycle();
         setBuilder(new CustomBuilder()
                 .setShape(shape)

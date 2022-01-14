@@ -45,45 +45,45 @@ public class ShapeRadioButton extends AppCompatRadioButton {
      */
     private void init(Context context, AttributeSet attrs) {
         @SuppressLint("CustomViewStyleable")
-        TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.ShapeSelectView);
-        int shape = ta.getInt(R.styleable.ShapeSelectView_shape, GradientDrawable.RECTANGLE);
+        TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.ShapeRadioButton);
+        int shape = ta.getInt(R.styleable.ShapeRadioButton_shape, GradientDrawable.RECTANGLE);
         if (shape > GradientDrawable.RING) {
             shape = GradientDrawable.RECTANGLE;
         }
         // 渐变
-        int startColor = ta.getColor(R.styleable.ShapeSelectView_startColor, 0);
-        int centerColor = ta.getColor(R.styleable.ShapeSelectView_centerColor, 0);
-        int endColor = ta.getColor(R.styleable.ShapeSelectView_endColor, 0);
-        int startSelectColor = ta.getColor(R.styleable.ShapeSelectView_startSelectColor, 0);
-        int centerSelectColor = ta.getColor(R.styleable.ShapeSelectView_centerSelectColor, 0);
-        int endSelectColor = ta.getColor(R.styleable.ShapeSelectView_endSelectColor, 0);
-        int orientation = ta.getInt(R.styleable.ShapeSelectView_orientation, 6);
+        int startColor = ta.getColor(R.styleable.ShapeRadioButton_startColor, 0);
+        int centerColor = ta.getColor(R.styleable.ShapeRadioButton_centerColor, 0);
+        int endColor = ta.getColor(R.styleable.ShapeRadioButton_endColor, 0);
+        int startSelectColor = ta.getColor(R.styleable.ShapeRadioButton_startSelectColor, 0);
+        int centerSelectColor = ta.getColor(R.styleable.ShapeRadioButton_centerSelectColor, 0);
+        int endSelectColor = ta.getColor(R.styleable.ShapeRadioButton_endSelectColor, 0);
+        int orientation = ta.getInt(R.styleable.ShapeRadioButton_orientation, 6);
         if (orientation > 7) {
             orientation = 6;
         }
-        int gradientType = ta.getInt(R.styleable.ShapeSelectView_gradientType, GradientDrawable.LINEAR_GRADIENT);
+        int gradientType = ta.getInt(R.styleable.ShapeRadioButton_gradientType, GradientDrawable.LINEAR_GRADIENT);
         if (gradientType > GradientDrawable.SWEEP_GRADIENT) {
             gradientType = GradientDrawable.LINEAR_GRADIENT;
         }
-        float gradientRadius = ta.getFloat(R.styleable.ShapeSelectView_gradientRadius, 0);
+        float gradientRadius = ta.getFloat(R.styleable.ShapeRadioButton_gradientRadius, 0);
         // 填充以及边框
-        int solidColor = ta.getColor(R.styleable.ShapeSelectView_solidColor, Color.TRANSPARENT);
-        int strokeColor = ta.getColor(R.styleable.ShapeSelectView_strokeColor, Color.TRANSPARENT);
-        int strokeWidth = ta.getDimensionPixelSize(R.styleable.ShapeSelectView_strokeWidth, 0);
-        int dashWidth = ta.getDimensionPixelSize(R.styleable.ShapeSelectView_dashWidth, 0);
-        int dashGap = ta.getDimensionPixelSize(R.styleable.ShapeSelectView_dashGap, 0);
+        int solidColor = ta.getColor(R.styleable.ShapeRadioButton_solidColor, Color.TRANSPARENT);
+        int strokeColor = ta.getColor(R.styleable.ShapeRadioButton_strokeColor, Color.TRANSPARENT);
+        int strokeWidth = ta.getDimensionPixelSize(R.styleable.ShapeRadioButton_strokeWidth, 0);
+        int dashWidth = ta.getDimensionPixelSize(R.styleable.ShapeRadioButton_dashWidth, 0);
+        int dashGap = ta.getDimensionPixelSize(R.styleable.ShapeRadioButton_dashGap, 0);
         //四个角单独设置会覆盖radius设置
-        int radius = ta.getDimensionPixelSize(R.styleable.ShapeSelectView_radius, 0);
-        int topLeftRadius = ta.getDimensionPixelSize(R.styleable.ShapeSelectView_topLeftRadius, radius);
-        int topRightRadius = ta.getDimensionPixelSize(R.styleable.ShapeSelectView_topRightRadius, radius);
-        int bottomLeftRadius = ta.getDimensionPixelSize(R.styleable.ShapeSelectView_bottomLeftRadius, radius);
-        int bottomRightRadius = ta.getDimensionPixelSize(R.styleable.ShapeSelectView_bottomRightRadius, radius);
+        int radius = ta.getDimensionPixelSize(R.styleable.ShapeRadioButton_radius, 0);
+        int topLeftRadius = ta.getDimensionPixelSize(R.styleable.ShapeRadioButton_topLeftRadius, radius);
+        int topRightRadius = ta.getDimensionPixelSize(R.styleable.ShapeRadioButton_topRightRadius, radius);
+        int bottomLeftRadius = ta.getDimensionPixelSize(R.styleable.ShapeRadioButton_bottomLeftRadius, radius);
+        int bottomRightRadius = ta.getDimensionPixelSize(R.styleable.ShapeRadioButton_bottomRightRadius, radius);
         //选择器
-        boolean openSelector = ta.getBoolean(R.styleable.ShapeSelectView_openSelector, false);
-        int textNormalColor = ta.getColor(R.styleable.ShapeSelectView_textNormalColor, Color.BLACK);
-        int textSelectColor = ta.getColor(R.styleable.ShapeSelectView_textSelectColor, Color.RED);
-        int solidSelectColor = ta.getColor(R.styleable.ShapeSelectView_solidSelectColor, Color.TRANSPARENT);
-        int strokeSelectColor = ta.getColor(R.styleable.ShapeSelectView_strokeSelectColor, Color.TRANSPARENT);
+        boolean openSelector = ta.getBoolean(R.styleable.ShapeRadioButton_openSelector, false);
+        int textNormalColor = ta.getColor(R.styleable.ShapeRadioButton_textNormalColor, Color.BLACK);
+        int textSelectColor = ta.getColor(R.styleable.ShapeRadioButton_textSelectColor, Color.RED);
+        int solidSelectColor = ta.getColor(R.styleable.ShapeRadioButton_solidSelectColor, Color.TRANSPARENT);
+        int strokeSelectColor = ta.getColor(R.styleable.ShapeRadioButton_strokeSelectColor, Color.TRANSPARENT);
         ta.recycle();
         setBuilder(new CustomBuilder()
                 .setShape(shape)

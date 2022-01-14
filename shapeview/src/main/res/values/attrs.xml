@@ -45,8 +45,8 @@
     <!--选中边框色-->
     <attr name="strokeSelectColor" format="color|reference" />
 
-    <!--自定义TextView-->
-    <declare-styleable name="ShapeView">
+    <!--ShapeTextView-->
+    <declare-styleable name="ShapeTextView">
         <!--shape类型 GradientDrawable.RECTANGLE, GradientDrawable.OVAL, GradientDrawable.LINE, GradientDrawable.RING  0~3 -->
         <attr name="shape" />
         <!--填充色-->
@@ -82,8 +82,313 @@
         <attr name="bottomRightRadius" />
     </declare-styleable>
 
-    <!--自定义CheckBox-->
-    <declare-styleable name="ShapeSelectView">
+    <!--ShapeRelativeLayout-->
+    <declare-styleable name="ShapeRelativeLayout">
+        <!--shape类型 GradientDrawable.RECTANGLE, GradientDrawable.OVAL, GradientDrawable.LINE, GradientDrawable.RING  0~3 -->
+        <attr name="shape" />
+        <!--填充色-->
+        <attr name="solidColor" />
+        <!--边框色-->
+        <attr name="strokeColor" />
+        <!--渐变颜色-->
+        <attr name="startColor" />
+        <attr name="centerColor" />
+        <attr name="endColor" />
+        <!--openSelector开启时，选中时的渐变颜色-->
+        <attr name="startSelectColor" />
+        <attr name="centerSelectColor" />
+        <attr name="endSelectColor" />
+        <!--渐变方向 GradientDrawable.Orientation -->
+        <attr name="orientation" />
+        <!--//渐变类型 支持 线性渐变，放射性渐变，扫描式渐变  0~2 -->
+        <attr name="gradientType" />
+        <!--渐变半径. 只有当渐变类型设置为 RADIAL_GRADIENT  时，半径才有效。 -->
+        <attr name="gradientRadius" />
+        <!--边框宽度-->
+        <attr name="strokeWidth" />
+        <!--虚线边框宽度-->
+        <attr name="dashWidth" />
+        <!--虚线边框间隙-->
+        <attr name="dashGap" />
+        <!--圆角弧度-->
+        <attr name="radius" />
+        <!--四个角的圆角弧度-->
+        <attr name="topLeftRadius" />
+        <attr name="topRightRadius" />
+        <attr name="bottomLeftRadius" />
+        <attr name="bottomRightRadius" />
+    </declare-styleable>
+
+    <!--ShapeRadioGroup-->
+    <declare-styleable name="ShapeRadioGroup">
+        <!--shape类型 GradientDrawable.RECTANGLE, GradientDrawable.OVAL, GradientDrawable.LINE, GradientDrawable.RING  0~3 -->
+        <attr name="shape" />
+        <!--填充色-->
+        <attr name="solidColor" />
+        <!--边框色-->
+        <attr name="strokeColor" />
+        <!--渐变颜色-->
+        <attr name="startColor" />
+        <attr name="centerColor" />
+        <attr name="endColor" />
+        <!--openSelector开启时，选中时的渐变颜色-->
+        <attr name="startSelectColor" />
+        <attr name="centerSelectColor" />
+        <attr name="endSelectColor" />
+        <!--渐变方向 GradientDrawable.Orientation -->
+        <attr name="orientation" />
+        <!--//渐变类型 支持 线性渐变，放射性渐变，扫描式渐变  0~2 -->
+        <attr name="gradientType" />
+        <!--渐变半径. 只有当渐变类型设置为 RADIAL_GRADIENT  时，半径才有效。 -->
+        <attr name="gradientRadius" />
+        <!--边框宽度-->
+        <attr name="strokeWidth" />
+        <!--虚线边框宽度-->
+        <attr name="dashWidth" />
+        <!--虚线边框间隙-->
+        <attr name="dashGap" />
+        <!--圆角弧度-->
+        <attr name="radius" />
+        <!--四个角的圆角弧度-->
+        <attr name="topLeftRadius" />
+        <attr name="topRightRadius" />
+        <attr name="bottomLeftRadius" />
+        <attr name="bottomRightRadius" />
+    </declare-styleable>
+
+    <!--ShapeLinearLayout-->
+    <declare-styleable name="ShapeLinearLayout">
+        <!--shape类型 GradientDrawable.RECTANGLE, GradientDrawable.OVAL, GradientDrawable.LINE, GradientDrawable.RING  0~3 -->
+        <attr name="shape" />
+        <!--填充色-->
+        <attr name="solidColor" />
+        <!--边框色-->
+        <attr name="strokeColor" />
+        <!--渐变颜色-->
+        <attr name="startColor" />
+        <attr name="centerColor" />
+        <attr name="endColor" />
+        <!--openSelector开启时，选中时的渐变颜色-->
+        <attr name="startSelectColor" />
+        <attr name="centerSelectColor" />
+        <attr name="endSelectColor" />
+        <!--渐变方向 GradientDrawable.Orientation -->
+        <attr name="orientation" />
+        <!--//渐变类型 支持 线性渐变，放射性渐变，扫描式渐变  0~2 -->
+        <attr name="gradientType" />
+        <!--渐变半径. 只有当渐变类型设置为 RADIAL_GRADIENT  时，半径才有效。 -->
+        <attr name="gradientRadius" />
+        <!--边框宽度-->
+        <attr name="strokeWidth" />
+        <!--虚线边框宽度-->
+        <attr name="dashWidth" />
+        <!--虚线边框间隙-->
+        <attr name="dashGap" />
+        <!--圆角弧度-->
+        <attr name="radius" />
+        <!--四个角的圆角弧度-->
+        <attr name="topLeftRadius" />
+        <attr name="topRightRadius" />
+        <attr name="bottomLeftRadius" />
+        <attr name="bottomRightRadius" />
+    </declare-styleable>
+
+    <!--ShapeImageView-->
+    <declare-styleable name="ShapeImageView">
+        <!--shape类型 GradientDrawable.RECTANGLE, GradientDrawable.OVAL, GradientDrawable.LINE, GradientDrawable.RING  0~3 -->
+        <attr name="shape" />
+        <!--填充色-->
+        <attr name="solidColor" />
+        <!--边框色-->
+        <attr name="strokeColor" />
+        <!--渐变颜色-->
+        <attr name="startColor" />
+        <attr name="centerColor" />
+        <attr name="endColor" />
+        <!--openSelector开启时，选中时的渐变颜色-->
+        <attr name="startSelectColor" />
+        <attr name="centerSelectColor" />
+        <attr name="endSelectColor" />
+        <!--渐变方向 GradientDrawable.Orientation -->
+        <attr name="orientation" />
+        <!--//渐变类型 支持 线性渐变，放射性渐变，扫描式渐变  0~2 -->
+        <attr name="gradientType" />
+        <!--渐变半径. 只有当渐变类型设置为 RADIAL_GRADIENT  时，半径才有效。 -->
+        <attr name="gradientRadius" />
+        <!--边框宽度-->
+        <attr name="strokeWidth" />
+        <!--虚线边框宽度-->
+        <attr name="dashWidth" />
+        <!--虚线边框间隙-->
+        <attr name="dashGap" />
+        <!--圆角弧度-->
+        <attr name="radius" />
+        <!--四个角的圆角弧度-->
+        <attr name="topLeftRadius" />
+        <attr name="topRightRadius" />
+        <attr name="bottomLeftRadius" />
+        <attr name="bottomRightRadius" />
+    </declare-styleable>
+
+    <!--ShapeFrameLayout-->
+    <declare-styleable name="ShapeFrameLayout">
+        <!--shape类型 GradientDrawable.RECTANGLE, GradientDrawable.OVAL, GradientDrawable.LINE, GradientDrawable.RING  0~3 -->
+        <attr name="shape" />
+        <!--填充色-->
+        <attr name="solidColor" />
+        <!--边框色-->
+        <attr name="strokeColor" />
+        <!--渐变颜色-->
+        <attr name="startColor" />
+        <attr name="centerColor" />
+        <attr name="endColor" />
+        <!--openSelector开启时，选中时的渐变颜色-->
+        <attr name="startSelectColor" />
+        <attr name="centerSelectColor" />
+        <attr name="endSelectColor" />
+        <!--渐变方向 GradientDrawable.Orientation -->
+        <attr name="orientation" />
+        <!--//渐变类型 支持 线性渐变，放射性渐变，扫描式渐变  0~2 -->
+        <attr name="gradientType" />
+        <!--渐变半径. 只有当渐变类型设置为 RADIAL_GRADIENT  时，半径才有效。 -->
+        <attr name="gradientRadius" />
+        <!--边框宽度-->
+        <attr name="strokeWidth" />
+        <!--虚线边框宽度-->
+        <attr name="dashWidth" />
+        <!--虚线边框间隙-->
+        <attr name="dashGap" />
+        <!--圆角弧度-->
+        <attr name="radius" />
+        <!--四个角的圆角弧度-->
+        <attr name="topLeftRadius" />
+        <attr name="topRightRadius" />
+        <attr name="bottomLeftRadius" />
+        <attr name="bottomRightRadius" />
+    </declare-styleable>
+
+    <!--ShapeEditText-->
+    <declare-styleable name="ShapeEditText">
+        <!--shape类型 GradientDrawable.RECTANGLE, GradientDrawable.OVAL, GradientDrawable.LINE, GradientDrawable.RING  0~3 -->
+        <attr name="shape" />
+        <!--填充色-->
+        <attr name="solidColor" />
+        <!--边框色-->
+        <attr name="strokeColor" />
+        <!--渐变颜色-->
+        <attr name="startColor" />
+        <attr name="centerColor" />
+        <attr name="endColor" />
+        <!--openSelector开启时，选中时的渐变颜色-->
+        <attr name="startSelectColor" />
+        <attr name="centerSelectColor" />
+        <attr name="endSelectColor" />
+        <!--渐变方向 GradientDrawable.Orientation -->
+        <attr name="orientation" />
+        <!--//渐变类型 支持 线性渐变，放射性渐变，扫描式渐变  0~2 -->
+        <attr name="gradientType" />
+        <!--渐变半径. 只有当渐变类型设置为 RADIAL_GRADIENT  时，半径才有效。 -->
+        <attr name="gradientRadius" />
+        <!--边框宽度-->
+        <attr name="strokeWidth" />
+        <!--虚线边框宽度-->
+        <attr name="dashWidth" />
+        <!--虚线边框间隙-->
+        <attr name="dashGap" />
+        <!--圆角弧度-->
+        <attr name="radius" />
+        <!--四个角的圆角弧度-->
+        <attr name="topLeftRadius" />
+        <attr name="topRightRadius" />
+        <attr name="bottomLeftRadius" />
+        <attr name="bottomRightRadius" />
+    </declare-styleable>
+
+    <!--ShapeConstraintLayout-->
+    <declare-styleable name="ShapeConstraintLayout">
+        <!--shape类型 GradientDrawable.RECTANGLE, GradientDrawable.OVAL, GradientDrawable.LINE, GradientDrawable.RING  0~3 -->
+        <attr name="shape" />
+        <!--填充色-->
+        <attr name="solidColor" />
+        <!--边框色-->
+        <attr name="strokeColor" />
+        <!--渐变颜色-->
+        <attr name="startColor" />
+        <attr name="centerColor" />
+        <attr name="endColor" />
+        <!--openSelector开启时，选中时的渐变颜色-->
+        <attr name="startSelectColor" />
+        <attr name="centerSelectColor" />
+        <attr name="endSelectColor" />
+        <!--渐变方向 GradientDrawable.Orientation -->
+        <attr name="orientation" />
+        <!--//渐变类型 支持 线性渐变，放射性渐变，扫描式渐变  0~2 -->
+        <attr name="gradientType" />
+        <!--渐变半径. 只有当渐变类型设置为 RADIAL_GRADIENT  时，半径才有效。 -->
+        <attr name="gradientRadius" />
+        <!--边框宽度-->
+        <attr name="strokeWidth" />
+        <!--虚线边框宽度-->
+        <attr name="dashWidth" />
+        <!--虚线边框间隙-->
+        <attr name="dashGap" />
+        <!--圆角弧度-->
+        <attr name="radius" />
+        <!--四个角的圆角弧度-->
+        <attr name="topLeftRadius" />
+        <attr name="topRightRadius" />
+        <attr name="bottomLeftRadius" />
+        <attr name="bottomRightRadius" />
+    </declare-styleable>
+
+    <!--ShapeCheckBox-->
+    <declare-styleable name="ShapeCheckBox">
+        <!--shape类型 GradientDrawable.RECTANGLE, GradientDrawable.OVAL, GradientDrawable.LINE, GradientDrawable.RING  0~3 -->
+        <attr name="shape" />
+        <!--填充色-->
+        <attr name="solidColor" />
+        <!--边框色-->
+        <attr name="strokeColor" />
+        <!--渐变颜色-->
+        <attr name="startColor" />
+        <attr name="centerColor" />
+        <attr name="endColor" />
+        <!--openSelector开启时，选中时的渐变颜色-->
+        <attr name="startSelectColor" />
+        <attr name="centerSelectColor" />
+        <attr name="endSelectColor" />
+        <!--渐变方向 GradientDrawable.Orientation -->
+        <attr name="orientation" />
+        <!--//渐变类型 支持 线性渐变，放射性渐变，扫描式渐变  0~2 -->
+        <attr name="gradientType" />
+        <!--渐变半径. 只有当渐变类型设置为 RADIAL_GRADIENT  时，半径才有效。 -->
+        <attr name="gradientRadius" />
+        <!--边框宽度-->
+        <attr name="strokeWidth" />
+        <!--虚线边框宽度-->
+        <attr name="dashWidth" />
+        <!--虚线边框间隙-->
+        <attr name="dashGap" />
+        <!--圆角弧度-->
+        <attr name="radius" />
+        <!--四个角的圆角弧度-->
+        <attr name="topLeftRadius" />
+        <attr name="topRightRadius" />
+        <attr name="bottomLeftRadius" />
+        <attr name="bottomRightRadius" />
+        <!--是否使用Selector选择器-->
+        <attr name="openSelector" />
+        <!--使用选择器时的字体色-->
+        <attr name="textNormalColor" />
+        <attr name="textSelectColor" />
+        <!--选中填充色-->
+        <attr name="solidSelectColor" />
+        <!--选中边框色-->
+        <attr name="strokeSelectColor" />
+    </declare-styleable>
+
+    <!--ShapeRadioButton-->
+    <declare-styleable name="ShapeRadioButton">
         <!--shape类型 GradientDrawable.RECTANGLE, GradientDrawable.OVAL, GradientDrawable.LINE, GradientDrawable.RING  0~3 -->
         <attr name="shape" />
         <!--填充色-->
