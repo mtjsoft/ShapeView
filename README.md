@@ -32,7 +32,7 @@ allprojects {
 
 ```
 dependencies {
-	        implementation 'com.github.mtjsoft:ShapeView:v2.0.0'
+	        implementation 'com.github.mtjsoft:ShapeView:v2.0.1'
 	}
 ```
 
@@ -41,7 +41,7 @@ dependencies {
 
 # 4、GridPager组件的版本及属性说明
 
-V2.0.0
+V2.0.1
 --------------------------
 - 重构设置属性代码。统一由 setBuilder(CustomBuilder builder)方法设置，详见demo
 - 新增渐变色相关属性
