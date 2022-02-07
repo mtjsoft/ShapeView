@@ -1,9 +1,8 @@
 package cn.mtjsoft.www.shapeview.util;
 
-import android.graphics.Color;
 import android.graphics.drawable.GradientDrawable;
 
-import cn.mtjsoft.www.shapeview.CustomBuilder;
+import cn.mtjsoft.www.shapeview.builder.CustomBuilder;
 
 public class GradientDrawableUtil {
 
@@ -25,6 +24,7 @@ public class GradientDrawableUtil {
      */
     private GradientDrawable getNeedDrawable(@CustomBuilder.Shape int shape, float[] radius, int[] colors, int strokeWidth, int strokeColor, float dashWidth, float dashGap, GradientDrawable.Orientation orientation, @CustomBuilder.GradientType int gradient, float gradientRadius) {
         GradientDrawable drawable = new GradientDrawable();
+        drawable.setDither(true);
         drawable.setShape(shape);
         drawable.setCornerRadii(radius);
         if (strokeWidth > 0) {

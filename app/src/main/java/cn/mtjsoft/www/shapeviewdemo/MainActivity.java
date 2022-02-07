@@ -8,7 +8,6 @@ import android.view.WindowManager;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
-import cn.mtjsoft.www.shapeview.CustomBuilder;
 import cn.mtjsoft.www.shapeview.ShapeTextView;
 
 public class MainActivity extends AppCompatActivity {

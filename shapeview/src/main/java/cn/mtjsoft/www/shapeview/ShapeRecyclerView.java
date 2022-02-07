@@ -5,31 +5,33 @@ import android.content.res.TypedArray;
 import android.graphics.drawable.GradientDrawable;
 import android.util.AttributeSet;
 
-import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.recyclerview.widget.RecyclerView;
 import cn.mtjsoft.www.shapeview.builder.CustomBuilder;
-import cn.mtjsoft.www.shapeview.styleable.ShapeConstraintLayoutStyleable;
+import cn.mtjsoft.www.shapeview.styleable.ShapeRecyclerViewStyleable;
 import cn.mtjsoft.www.shapeview.util.GradientDrawableUtil;
 
 /**
  * 实现自定义圆角背景
+ *
+ * @author mtj
  */
-public class ShapeConstraintLayout extends ConstraintLayout {
+public class ShapeRecyclerView extends RecyclerView {
     //自定背景边框Drawable
     private GradientDrawable gradientDrawable;
 
     private CustomBuilder builder;
 
-    private static final ShapeConstraintLayoutStyleable STYLEABLE = new ShapeConstraintLayoutStyleable();
+    private static final ShapeRecyclerViewStyleable STYLEABLE = new ShapeRecyclerViewStyleable();
 
-    public ShapeConstraintLayout(Context context) {
+    public ShapeRecyclerView(Context context) {
         this(context, null);
     }
 
-    public ShapeConstraintLayout(Context context, AttributeSet attrs) {
+    public ShapeRecyclerView(Context context, AttributeSet attrs) {
         this(context, attrs, 0);
     }
 
-    public ShapeConstraintLayout(Context context, AttributeSet attrs, int defStyleAttr) {
+    public ShapeRecyclerView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         init(context, attrs);
     }
@@ -38,7 +40,7 @@ public class ShapeConstraintLayout extends ConstraintLayout {
      * 初始化参数
      */
     private void init(Context context, AttributeSet attrs) {
-        TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.ShapeConstraintLayout);
+        TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.ShapeRecyclerView);
         builder = new CustomBuilder(this, ta, STYLEABLE);
         setCustomBackground();
     }

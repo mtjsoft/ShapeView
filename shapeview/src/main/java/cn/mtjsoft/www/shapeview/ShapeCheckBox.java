@@ -1,28 +1,30 @@
 package cn.mtjsoft.www.shapeview;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.ColorStateList;
 import android.content.res.TypedArray;
-import android.graphics.Color;
 import android.graphics.drawable.GradientDrawable;
 import android.graphics.drawable.StateListDrawable;
 import android.util.AttributeSet;
 
 import androidx.appcompat.widget.AppCompatCheckBox;
+import cn.mtjsoft.www.shapeview.builder.CustomBuilder;
+import cn.mtjsoft.www.shapeview.styleable.ShapeCheckBoxStyleable;
 import cn.mtjsoft.www.shapeview.util.GradientDrawableUtil;
 
 /**
  * 实现自定义圆角背景
  */
 public class ShapeCheckBox extends AppCompatCheckBox {
-
     //自定背景边框Drawable
     private GradientDrawable gradientDrawable;
+
     //选中时的Drawable
     private GradientDrawable selectorDrawable;
 
     private CustomBuilder builder;
+
+    private static final ShapeCheckBoxStyleable STYLEABLE = new ShapeCheckBoxStyleable();
 
     public ShapeCheckBox(Context context) {
         this(context, null);
@@ -39,75 +41,11 @@ public class ShapeCheckBox extends AppCompatCheckBox {
 
     /**
      * 初始化参数
-     *
-     * @param context
-     * @param attrs
      */
     private void init(Context context, AttributeSet attrs) {
-        @SuppressLint("CustomViewStyleable") 
         TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.ShapeCheckBox);
-        int shape = ta.getInt(R.styleable.ShapeCheckBox_shape, GradientDrawable.RECTANGLE);
-        if (shape > GradientDrawable.RING) {
-            shape = GradientDrawable.RECTANGLE;
-        }
-        // 渐变
-        int startColor = ta.getColor(R.styleable.ShapeCheckBox_startColor, 0);
-        int centerColor = ta.getColor(R.styleable.ShapeCheckBox_centerColor, 0);
-        int endColor = ta.getColor(R.styleable.ShapeCheckBox_endColor, 0);
-        int startSelectColor = ta.getColor(R.styleable.ShapeCheckBox_startSelectColor, 0);
-        int centerSelectColor = ta.getColor(R.styleable.ShapeCheckBox_centerSelectColor, 0);
-        int endSelectColor = ta.getColor(R.styleable.ShapeCheckBox_endSelectColor, 0);
-        int orientation = ta.getInt(R.styleable.ShapeCheckBox_orientation, 6);
-        if (orientation > 7) {
-            orientation = 6;
-        }
-        int gradientType = ta.getInt(R.styleable.ShapeCheckBox_gradientType, GradientDrawable.LINEAR_GRADIENT);
-        if (gradientType > GradientDrawable.SWEEP_GRADIENT) {
-            gradientType = GradientDrawable.LINEAR_GRADIENT;
-        }
-        float gradientRadius = ta.getFloat(R.styleable.ShapeCheckBox_gradientRadius, 0);
-        // 填充以及边框
-        int solidColor = ta.getColor(R.styleable.ShapeCheckBox_solidColor, Color.TRANSPARENT);
-        int strokeColor = ta.getColor(R.styleable.ShapeCheckBox_strokeColor, Color.TRANSPARENT);
-        int strokeWidth = ta.getDimensionPixelSize(R.styleable.ShapeCheckBox_strokeWidth, 0);
-        int dashWidth = ta.getDimensionPixelSize(R.styleable.ShapeCheckBox_dashWidth, 0);
-        int dashGap = ta.getDimensionPixelSize(R.styleable.ShapeCheckBox_dashGap, 0);
-        //四个角单独设置会覆盖radius设置
-        int radius = ta.getDimensionPixelSize(R.styleable.ShapeCheckBox_radius, 0);
-        int topLeftRadius = ta.getDimensionPixelSize(R.styleable.ShapeCheckBox_topLeftRadius, radius);
-        int topRightRadius = ta.getDimensionPixelSize(R.styleable.ShapeCheckBox_topRightRadius, radius);
-        int bottomLeftRadius = ta.getDimensionPixelSize(R.styleable.ShapeCheckBox_bottomLeftRadius, radius);
-        int bottomRightRadius = ta.getDimensionPixelSize(R.styleable.ShapeCheckBox_bottomRightRadius, radius);
-        //选择器
-        boolean openSelector = ta.getBoolean(R.styleable.ShapeCheckBox_openSelector, false);
-        int textNormalColor = ta.getColor(R.styleable.ShapeCheckBox_textNormalColor, Color.BLACK);
-        int textSelectColor = ta.getColor(R.styleable.ShapeCheckBox_textSelectColor, Color.RED);
-        int solidSelectColor = ta.getColor(R.styleable.ShapeCheckBox_solidSelectColor, Color.TRANSPARENT);
-        int strokeSelectColor = ta.getColor(R.styleable.ShapeCheckBox_strokeSelectColor, Color.TRANSPARENT);
-        ta.recycle();
-        setBuilder(new CustomBuilder()
-                .setShape(shape)
-                .setColors(startColor, centerColor, endColor)
-                .setSelectColors(startSelectColor, centerSelectColor, endSelectColor)
-                .setOrientationById(orientation)
-                .setGradientType(gradientType)
-                .setGradientRadius(gradientRadius)
-                .setSolidColor(solidColor)
-                .setStrokeColor(strokeColor)
-                .setStrokeWidth(strokeWidth)
-                .setDashWidth(dashWidth)
-                .setDashGap(dashGap)
-                .setRadius(radius)
-                .setTopLeftRadius(topLeftRadius)
-                .setTopRightRadius(topRightRadius)
-                .setBottomLeftRadius(bottomLeftRadius)
-                .setBottomRightRadius(bottomRightRadius)
-                .setOpenSelector(openSelector)
-                .setTextNormalColor(textNormalColor)
-                .setTextSelectColor(textSelectColor)
-                .setSolidSelectColor(solidSelectColor)
-                .setStrokeSelectColor(strokeSelectColor)
-        );
+        builder = new CustomBuilder(this, ta, STYLEABLE);
+        setCustomBackground();
     }
 
     public void setBuilder(CustomBuilder builder) {
@@ -128,6 +66,10 @@ public class ShapeCheckBox extends AppCompatCheckBox {
     }
 
     private void setCustomBackground() {
+        if (builder == null) {
+            return;
+        }
+        builder.setLayerType(this);
         gradientDrawable = GradientDrawableUtil.init().getNormalDrawable(builder);
         //如果设置了选中时的背景
         if (builder.isOpenSelector()) {
@@ -136,14 +78,15 @@ public class ShapeCheckBox extends AppCompatCheckBox {
             StateListDrawable stateListDrawable = new StateListDrawable();
             //是否选中
             int checked = android.R.attr.state_checked;
-            stateListDrawable.addState(new int[]{checked}, selectorDrawable);
-            stateListDrawable.addState(new int[]{}, gradientDrawable);
+            stateListDrawable.addState(new int[] { checked }, selectorDrawable);
+            stateListDrawable.addState(new int[] {}, gradientDrawable);
             // 设置背景色
             this.setBackground(stateListDrawable);
             int[][] states = new int[2][];
-            states[0] = new int[]{android.R.attr.state_checked};
-            states[1] = new int[]{};
-            ColorStateList textColorStateList = new ColorStateList(states, new int[]{builder.getTextSelectColor(), builder.getTextNormalColor()});
+            states[0] = new int[] { android.R.attr.state_checked };
+            states[1] = new int[] {};
+            ColorStateList textColorStateList =
+                new ColorStateList(states, new int[] { builder.getTextSelectColor(), builder.getTextNormalColor() });
             this.setTextColor(textColorStateList);
         } else {
             this.setBackground(gradientDrawable);

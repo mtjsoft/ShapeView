@@ -2,7 +2,7 @@ package cn.mtjsoft.www.shapeview.imp;
 
 import android.graphics.drawable.GradientDrawable;
 
-import cn.mtjsoft.www.shapeview.CustomBuilder;
+import cn.mtjsoft.www.shapeview.builder.CustomBuilder;
 
 /**
  * @author mtj

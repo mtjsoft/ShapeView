@@ -1,13 +1,13 @@
 package cn.mtjsoft.www.shapeview;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.TypedArray;
-import android.graphics.Color;
 import android.graphics.drawable.GradientDrawable;
 import android.util.AttributeSet;
 
 import androidx.appcompat.widget.AppCompatImageView;
+import cn.mtjsoft.www.shapeview.builder.CustomBuilder;
+import cn.mtjsoft.www.shapeview.styleable.ShapeImageViewStyleable;
 import cn.mtjsoft.www.shapeview.util.GradientDrawableUtil;
 
 /**
@@ -19,6 +19,8 @@ public class ShapeImageView extends AppCompatImageView {
     private GradientDrawable gradientDrawable;
 
     private CustomBuilder builder;
+
+    private static final ShapeImageViewStyleable STYLEABLE = new ShapeImageViewStyleable();
 
     public ShapeImageView(Context context) {
         this(context, null);
@@ -40,59 +42,9 @@ public class ShapeImageView extends AppCompatImageView {
      * @param attrs
      */
     private void init(Context context, AttributeSet attrs) {
-        @SuppressLint("CustomViewStyleable")
         TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.ShapeImageView);
-        int shape = ta.getInt(R.styleable.ShapeImageView_shape, GradientDrawable.RECTANGLE);
-        if (shape > GradientDrawable.RING) {
-            shape = GradientDrawable.RECTANGLE;
-        }
-        // 渐变
-        int startColor = ta.getColor(R.styleable.ShapeImageView_startColor, 0);
-        int centerColor = ta.getColor(R.styleable.ShapeImageView_centerColor, 0);
-        int endColor = ta.getColor(R.styleable.ShapeImageView_endColor, 0);
-        int startSelectColor = ta.getColor(R.styleable.ShapeImageView_startSelectColor, 0);
-        int centerSelectColor = ta.getColor(R.styleable.ShapeImageView_centerSelectColor, 0);
-        int endSelectColor = ta.getColor(R.styleable.ShapeImageView_endSelectColor, 0);
-        int orientation = ta.getInt(R.styleable.ShapeImageView_orientation, 6);
-        if (orientation > 7) {
-            orientation = 6;
-        }
-        int gradientType = ta.getInt(R.styleable.ShapeImageView_gradientType, GradientDrawable.LINEAR_GRADIENT);
-        if (gradientType > GradientDrawable.SWEEP_GRADIENT) {
-            gradientType = GradientDrawable.LINEAR_GRADIENT;
-        }
-        float gradientRadius = ta.getFloat(R.styleable.ShapeImageView_gradientRadius, 0);
-        // 填充以及边框
-        int solidColor = ta.getColor(R.styleable.ShapeImageView_solidColor, Color.TRANSPARENT);
-        int strokeColor = ta.getColor(R.styleable.ShapeImageView_strokeColor, Color.TRANSPARENT);
-        int strokeWidth = ta.getDimensionPixelSize(R.styleable.ShapeImageView_strokeWidth, 0);
-        int dashWidth = ta.getDimensionPixelSize(R.styleable.ShapeImageView_dashWidth, 0);
-        int dashGap = ta.getDimensionPixelSize(R.styleable.ShapeImageView_dashGap, 0);
-        //四个角单独设置会覆盖radius设置
-        int radius = ta.getDimensionPixelSize(R.styleable.ShapeImageView_radius, 0);
-        int topLeftRadius = ta.getDimensionPixelSize(R.styleable.ShapeImageView_topLeftRadius, radius);
-        int topRightRadius = ta.getDimensionPixelSize(R.styleable.ShapeImageView_topRightRadius, radius);
-        int bottomLeftRadius = ta.getDimensionPixelSize(R.styleable.ShapeImageView_bottomLeftRadius, radius);
-        int bottomRightRadius = ta.getDimensionPixelSize(R.styleable.ShapeImageView_bottomRightRadius, radius);
-        ta.recycle();
-        setBuilder(new CustomBuilder()
-                .setShape(shape)
-                .setColors(startColor, centerColor, endColor)
-                .setSelectColors(startSelectColor, centerSelectColor, endSelectColor)
-                .setOrientationById(orientation)
-                .setGradientType(gradientType)
-                .setGradientRadius(gradientRadius)
-                .setSolidColor(solidColor)
-                .setStrokeColor(strokeColor)
-                .setStrokeWidth(strokeWidth)
-                .setDashWidth(dashWidth)
-                .setDashGap(dashGap)
-                .setRadius(radius)
-                .setTopLeftRadius(topLeftRadius)
-                .setTopRightRadius(topRightRadius)
-                .setBottomLeftRadius(bottomLeftRadius)
-                .setBottomRightRadius(bottomRightRadius)
-        );
+        builder = new CustomBuilder(this, ta, STYLEABLE);
+        setCustomBackground();
     }
 
     public void setBuilder(CustomBuilder builder) {
@@ -109,7 +61,10 @@ public class ShapeImageView extends AppCompatImageView {
     }
 
     private void setCustomBackground() {
-        //默认背景
+        if (builder == null) {
+            return;
+        }
+        builder.setLayerType(this);
         gradientDrawable = GradientDrawableUtil.init().getNormalDrawable(builder);
         this.setBackground(gradientDrawable);
         this.setFocusable(false);

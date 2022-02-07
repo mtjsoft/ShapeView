@@ -32,14 +32,19 @@ allprojects {
 
 ```
 dependencies {
-	        implementation 'com.github.mtjsoft:ShapeView:v2.0.2'
+	        implementation 'com.github.mtjsoft:ShapeView:v2.1.0'
 	}
 ```
 
 [![](https://jitpack.io/v/mtjsoft/ShapeView.svg)](https://jitpack.io/#mtjsoft/ShapeView)
 
 
-# 4、GridPager组件的版本及属性说明
+# 3、GridPager组件的版本及属性说明
+
+V2.1.0
+--------------------------
+- 优化属性设置
+- 修复已知问题
 
 V2.0.2
 --------------------------
@@ -95,6 +100,83 @@ textNormalColor  | 使用选择器时的默认字体色
 textSelectColor  | 使用选择器时的选中字体色
 solidSelectColor  | 使用选择器时的选中填充色
 strokeSelectColor  | 使用选择器时的选中边框色
+
+全部属性：
+--------------------------
+```
+<resources>
+    <!--shape类型 GradientDrawable.RECTANGLE, GradientDrawable.OVAL, GradientDrawable.LINE, GradientDrawable.RING  0~3 -->
+    <attr name="shape">
+        <!-- 矩形 -->
+        <enum name="rectangle" value="0" />
+        <!-- 圆形 -->
+        <enum name="oval" value="1" />
+        <!-- 线条 -->
+        <enum name="line" value="2" />
+        <!-- 圆环 -->
+        <enum name="ring" value="3" />
+    </attr>
+    <!--填充色-->
+    <attr name="solidColor" format="color|reference" />
+    <!--边框色-->
+    <attr name="strokeColor" format="color|reference" />
+
+    <!--渐变颜色-->
+    <attr name="startColor" format="color|reference" />
+    <attr name="centerColor" format="color|reference" />
+    <attr name="endColor" format="color|reference" />
+    <!--openSelector开启时，选中时的渐变颜色-->
+    <attr name="startSelectColor" format="color|reference" />
+    <attr name="centerSelectColor" format="color|reference" />
+    <attr name="endSelectColor" format="color|reference" />
+    <!--渐变方向 GradientDrawable.Orientation 0~7 -->
+    <attr name="orientation" >
+        <enum name="TOP_BOTTOM" value="0" />
+        <enum name="TR_BL" value="1" />
+        <enum name="RIGHT_LEFT" value="2" />
+        <enum name="BR_TL" value="3" />
+        <enum name="BOTTOM_TOP" value="4" />
+        <enum name="BL_TR" value="5" />
+        <enum name="LEFT_RIGHT" value="6" />
+        <enum name="TL_BR" value="7" />
+    </attr>
+    <!--//渐变类型 支持 线性渐变，放射性渐变，扫描式渐变  0~2 -->
+    <attr name="gradientType">
+        <!-- 线性渐变 -->
+        <enum name="linear" value="0" />
+        <!-- 放射性渐变 -->
+        <enum name="radial" value="1" />
+        <!-- 扫描式渐变 -->
+        <enum name="sweep"  value="2" />
+    </attr>
+    <!--渐变半径. 只有当渐变类型设置为 RADIAL_GRADIENT  时，半径才有效。 -->
+    <attr name="gradientRadius" format="float" />
+
+    <!--边框宽度-->
+    <attr name="strokeWidth" format="dimension" />
+    <!--圆角弧度-->
+    <attr name="radius" format="dimension" />
+    <!--虚线边框宽度-->
+    <attr name="dashWidth" format="dimension" />
+    <!--虚线边框间隙-->
+    <attr name="dashGap" format="dimension" />
+    <!--四个角的圆角弧度-->
+    <attr name="topLeftRadius" format="dimension" />
+    <attr name="topRightRadius" format="dimension" />
+    <attr name="bottomLeftRadius" format="dimension" />
+    <attr name="bottomRightRadius" format="dimension" />
+    <!--是否使用Selector选择器-->
+    <attr name="openSelector" format="boolean" />
+    <!--使用选择器时的字体色-->
+    <attr name="textNormalColor" format="color|reference" />
+    <attr name="textSelectColor" format="color|reference" />
+    <!--选中填充色-->
+    <attr name="solidSelectColor" format="color|reference" />
+    <!--选中边框色-->
+    <attr name="strokeSelectColor" format="color|reference" />
+</resources>
+```
+
 
 # 4、在需要使用的布局xml中添加ShapeView组件，根据需要设置相关属性
 
@@ -213,62 +295,57 @@ strokeSelectColor  | 使用选择器时的选中边框色
             <cn.mtjsoft.www.shapeview.ShapeTextView
                 android:layout_width="80dp"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
+                android:layout_marginStart="5dp"
                 android:gravity="center"
                 android:padding="10dp"
                 android:text=""
                 android:textColor="@android:color/white"
                 android:textSize="14sp"
-                app:strokeColor="@color/colorAccent"
-                app:strokeWidth="1dp"
-                app:orientation="2"
-                app:startColor="@color/colorAccent"
                 app:endColor="@color/colorPrimary"
-                app:radius="5dp" />
+                app:orientation="BOTTOM_TOP"
+                app:radius="5dp"
+                app:startColor="@color/colorAccent"
+                app:strokeColor="@color/colorAccent"
+                app:strokeWidth="1dp" />
 
             <cn.mtjsoft.www.shapeview.ShapeTextView
                 android:layout_width="80dp"
                 android:layout_height="80dp"
-                android:layout_marginEnd="10dp"
+                android:layout_marginStart="5dp"
                 android:gravity="center"
                 android:text=""
                 android:textColor="@android:color/white"
                 android:textSize="14sp"
-                app:strokeColor="@color/colorAccent"
-                app:strokeWidth="1dp"
-                app:shape="1"
-                app:gradientType="1"
-                app:gradientRadius="150f"
-                app:startColor="@color/colorAccent"
                 app:centerColor="@color/colorPrimaryDark"
                 app:endColor="@color/colorPrimary"
-                app:radius="5dp" />
+                app:gradientRadius="150"
+                app:gradientType="radial"
+                app:radius="5dp"
+                app:shape="oval"
+                app:startColor="@color/colorAccent"
+                app:strokeColor="@color/colorAccent"
+                app:strokeWidth="1dp" />
 
             <cn.mtjsoft.www.shapeview.ShapeTextView
                 android:layout_width="80dp"
                 android:layout_height="80dp"
-                android:layout_marginEnd="10dp"
+                android:layout_marginStart="5dp"
                 android:gravity="center"
                 android:text=""
                 android:textColor="@android:color/white"
                 android:textSize="14sp"
-                app:strokeColor="@color/colorAccent"
-                app:strokeWidth="1dp"
-                app:shape="0"
-                app:gradientType="2"
-                app:gradientRadius="150f"
-                app:startColor="@color/colorAccent"
                 app:centerColor="@color/colorPrimaryDark"
                 app:endColor="@color/colorPrimary"
-                app:radius="5dp" />
+                app:gradientRadius="150"
+                app:gradientType="sweep"
+                app:radius="5dp"
+                app:shape="rectangle"
+                app:startColor="@color/colorAccent"
+                app:strokeColor="@color/colorAccent"
+                app:strokeWidth="1dp" />
         </LinearLayout>
 ```
 
 **添加我个人微信号交流，记得添加时备注一下哦**
 
 ![个人微信号](https://img-blog.csdnimg.cn/20190925134415595.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzI4Nzc5MDgz,size_16,color_FFFFFF,t_70)
-
-**本人公众号，也可关注一波，共同交流吧。**
-
-![本人公众号](https://img-blog.csdnimg.cn/2019012509485178.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzI4Nzc5MDgz,size_16,color_FFFFFF,t_70)
-
