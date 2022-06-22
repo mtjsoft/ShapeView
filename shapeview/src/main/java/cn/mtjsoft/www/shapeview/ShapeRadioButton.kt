@@ -5,7 +5,7 @@ import android.content.res.ColorStateList
 import android.graphics.drawable.GradientDrawable
 import android.graphics.drawable.StateListDrawable
 import android.util.AttributeSet
-import android.widget.RadioButton
+import androidx.appcompat.widget.AppCompatRadioButton
 import cn.mtjsoft.www.shapeview.builder.CustomBuilder
 import cn.mtjsoft.www.shapeview.styleable.ShapeRadioButtonStyleable
 import cn.mtjsoft.www.shapeview.util.GradientDrawableUtil.Companion.init
@@ -17,7 +17,7 @@ class ShapeRadioButton @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet,
     defStyleAttr: Int = 0
-) : RadioButton(context, attrs, defStyleAttr) {
+) : AppCompatRadioButton(context, attrs, defStyleAttr) {
     //自定背景边框Drawable
     var gradientDrawable: GradientDrawable? = null
         private set
