@@ -1,97 +1,84 @@
-package cn.mtjsoft.www.shapeview;
+package cn.mtjsoft.www.shapeview
 
-import android.content.Context;
-import android.content.res.ColorStateList;
-import android.content.res.TypedArray;
-import android.graphics.drawable.GradientDrawable;
-import android.graphics.drawable.StateListDrawable;
-import android.util.AttributeSet;
-
-import androidx.appcompat.widget.AppCompatCheckBox;
-import cn.mtjsoft.www.shapeview.builder.CustomBuilder;
-import cn.mtjsoft.www.shapeview.styleable.ShapeCheckBoxStyleable;
-import cn.mtjsoft.www.shapeview.util.GradientDrawableUtil;
+import android.content.Context
+import android.content.res.ColorStateList
+import android.graphics.drawable.GradientDrawable
+import android.graphics.drawable.StateListDrawable
+import android.util.AttributeSet
+import androidx.appcompat.widget.AppCompatCheckBox
+import cn.mtjsoft.www.shapeview.builder.CustomBuilder
+import cn.mtjsoft.www.shapeview.styleable.ShapeCheckBoxStyleable
+import cn.mtjsoft.www.shapeview.util.GradientDrawableUtil.Companion.init
 
 /**
  * 实现自定义圆角背景
  */
-public class ShapeCheckBox extends AppCompatCheckBox {
+class ShapeCheckBox @JvmOverloads constructor(
+    context: Context,
+    attrs: AttributeSet,
+    defStyleAttr: Int = 0
+) : AppCompatCheckBox(context, attrs, defStyleAttr) {
     //自定背景边框Drawable
-    private GradientDrawable gradientDrawable;
+    var gradientDrawable: GradientDrawable? = null
+        private set
 
     //选中时的Drawable
-    private GradientDrawable selectorDrawable;
-
-    private CustomBuilder builder;
-
-    private static final ShapeCheckBoxStyleable STYLEABLE = new ShapeCheckBoxStyleable();
-
-    public ShapeCheckBox(Context context) {
-        this(context, null);
-    }
-
-    public ShapeCheckBox(Context context, AttributeSet attrs) {
-        this(context, attrs, 0);
-    }
-
-    public ShapeCheckBox(Context context, AttributeSet attrs, int defStyleAttr) {
-        super(context, attrs, defStyleAttr);
-        init(context, attrs);
-    }
+    var selectorDrawable: GradientDrawable? = null
+        private set
+    private lateinit var builder: CustomBuilder
 
     /**
      * 初始化参数
      */
-    private void init(Context context, AttributeSet attrs) {
-        TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.ShapeCheckBox);
-        builder = new CustomBuilder(this, ta, STYLEABLE);
-        setCustomBackground();
+    private fun init(context: Context, attrs: AttributeSet) {
+        val ta = context.obtainStyledAttributes(attrs, R.styleable.ShapeCheckBox)
+        builder = CustomBuilder(this, ta, STYLEABLE)
+        setCustomBackground()
     }
 
-    public void setBuilder(CustomBuilder builder) {
-        this.builder = builder;
-        setCustomBackground();
+    fun setBuilder(builder: CustomBuilder) {
+        this.builder = builder
+        setCustomBackground()
     }
 
-    public CustomBuilder getBuilder() {
-        return builder;
+    fun getBuilder(): CustomBuilder {
+        return builder
     }
 
-    public GradientDrawable getGradientDrawable() {
-        return gradientDrawable;
-    }
-
-    public GradientDrawable getSelectorDrawable() {
-        return selectorDrawable;
-    }
-
-    private void setCustomBackground() {
-        if (builder == null) {
-            return;
-        }
-        builder.setLayerType(this);
-        gradientDrawable = GradientDrawableUtil.init().getNormalDrawable(builder);
+    private fun setCustomBackground() {
+        builder.setLayerType(this)
+        gradientDrawable = init().getNormalDrawable(builder)
         //如果设置了选中时的背景
-        if (builder.isOpenSelector()) {
-            selectorDrawable = GradientDrawableUtil.init().getSelectorDrawable(builder);
+        if (builder.isOpenSelector) {
+            selectorDrawable = init().getSelectorDrawable(builder)
             //动态生成Selector
-            StateListDrawable stateListDrawable = new StateListDrawable();
+            val stateListDrawable = StateListDrawable()
             //是否选中
-            int checked = android.R.attr.state_checked;
-            stateListDrawable.addState(new int[] { checked }, selectorDrawable);
-            stateListDrawable.addState(new int[] {}, gradientDrawable);
+            val checked = android.R.attr.state_checked
+            stateListDrawable.addState(intArrayOf(checked), selectorDrawable)
+            stateListDrawable.addState(intArrayOf(), gradientDrawable)
             // 设置背景色
-            this.setBackground(stateListDrawable);
-            int[][] states = new int[2][];
-            states[0] = new int[] { android.R.attr.state_checked };
-            states[1] = new int[] {};
-            ColorStateList textColorStateList =
-                new ColorStateList(states, new int[] { builder.getTextSelectColor(), builder.getTextNormalColor() });
-            this.setTextColor(textColorStateList);
+            this.background = stateListDrawable
+            val states = arrayOfNulls<IntArray>(2)
+            states[0] = intArrayOf(android.R.attr.state_checked)
+            states[1] = intArrayOf()
+            val textColorStateList = ColorStateList(
+                states,
+                intArrayOf(builder.textSelectColor, builder.textNormalColor)
+            )
+            this.setTextColor(textColorStateList)
         } else {
-            this.setBackground(gradientDrawable);
+            this.background = gradientDrawable
         }
-        this.setFocusable(false);
-        this.setClickable(true);
+        this.isFocusable = false
+        this.isClickable = true
+    }
+
+    companion object {
+        private val STYLEABLE = ShapeCheckBoxStyleable()
+    }
+
+    init {
+        init(context, attrs)
     }
 }

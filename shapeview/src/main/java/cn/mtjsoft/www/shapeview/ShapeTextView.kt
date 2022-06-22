@@ -1,69 +1,57 @@
-package cn.mtjsoft.www.shapeview;
+package cn.mtjsoft.www.shapeview
 
-import android.content.Context;
-import android.content.res.TypedArray;
-import android.graphics.drawable.GradientDrawable;
-import android.util.AttributeSet;
-
-import androidx.appcompat.widget.AppCompatTextView;
-import cn.mtjsoft.www.shapeview.builder.CustomBuilder;
-import cn.mtjsoft.www.shapeview.styleable.ShapeTextViewStyleable;
-import cn.mtjsoft.www.shapeview.util.GradientDrawableUtil;
+import android.content.Context
+import android.graphics.drawable.GradientDrawable
+import android.util.AttributeSet
+import androidx.appcompat.widget.AppCompatTextView
+import cn.mtjsoft.www.shapeview.builder.CustomBuilder
+import cn.mtjsoft.www.shapeview.styleable.ShapeTextViewStyleable
+import cn.mtjsoft.www.shapeview.util.GradientDrawableUtil.Companion.init
 
 /**
  * 实现自定义圆角背景
  */
-public class ShapeTextView extends AppCompatTextView {
+class ShapeTextView @JvmOverloads constructor(
+    context: Context,
+    attrs: AttributeSet,
+    defStyleAttr: Int = 0
+) : AppCompatTextView(context, attrs, defStyleAttr) {
     //自定背景边框Drawable
-    private GradientDrawable gradientDrawable;
-
-    private CustomBuilder builder;
-
-    private static final ShapeTextViewStyleable STYLEABLE = new ShapeTextViewStyleable();
-
-    public ShapeTextView(Context context) {
-        this(context, null);
-    }
-
-    public ShapeTextView(Context context, AttributeSet attrs) {
-        this(context, attrs, 0);
-    }
-
-    public ShapeTextView(Context context, AttributeSet attrs, int defStyleAttr) {
-        super(context, attrs, defStyleAttr);
-        init(context, attrs);
-    }
+    var gradientDrawable: GradientDrawable? = null
+        private set
+    private lateinit var builder: CustomBuilder
 
     /**
      * 初始化参数
      */
-    private void init(Context context, AttributeSet attrs) {
-        TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.ShapeTextView);
-        builder = new CustomBuilder(this, ta, STYLEABLE);
-        setCustomBackground();
+    private fun init(context: Context, attrs: AttributeSet) {
+        val ta = context.obtainStyledAttributes(attrs, R.styleable.ShapeTextView)
+        builder = CustomBuilder(this, ta, STYLEABLE)
+        setCustomBackground()
     }
 
-    public void setBuilder(CustomBuilder builder) {
-        this.builder = builder;
-        setCustomBackground();
+    fun setBuilder(builder: CustomBuilder) {
+        this.builder = builder
+        setCustomBackground()
     }
 
-    public CustomBuilder getBuilder() {
-        return builder;
+    fun getBuilder(): CustomBuilder {
+        return builder
     }
 
-    public GradientDrawable getGradientDrawable() {
-        return gradientDrawable;
+    private fun setCustomBackground() {
+        builder.setLayerType(this)
+        gradientDrawable = init().getNormalDrawable(builder)
+        this.background = gradientDrawable
+        this.isFocusable = false
+        this.isFocusableInTouchMode = false
     }
 
-    private void setCustomBackground() {
-        if (builder == null) {
-            return;
-        }
-        builder.setLayerType(this);
-        gradientDrawable = GradientDrawableUtil.init().getNormalDrawable(builder);
-        this.setBackground(gradientDrawable);
-        this.setFocusable(false);
-        this.setFocusableInTouchMode(false);
+    companion object {
+        private val STYLEABLE = ShapeTextViewStyleable()
+    }
+
+    init {
+        init(context, attrs)
     }
 }

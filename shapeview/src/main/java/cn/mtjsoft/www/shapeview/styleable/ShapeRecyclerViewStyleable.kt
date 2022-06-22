@@ -1,7 +1,7 @@
-package cn.mtjsoft.www.shapeview.styleable;
+package cn.mtjsoft.www.shapeview.styleable
 
-import cn.mtjsoft.www.shapeview.R;
-import cn.mtjsoft.www.shapeview.imp.IStyleable;
+import cn.mtjsoft.www.shapeview.imp.IStyleable
+import cn.mtjsoft.www.shapeview.R
 
 /**
  * @author mtj
@@ -9,129 +9,55 @@ import cn.mtjsoft.www.shapeview.imp.IStyleable;
  * @desc
  * @email mtjsoft3@gmail.com
  */
-public class ShapeRecyclerViewStyleable implements IStyleable {
-    @Override
-    public int getShape() {
-        return R.styleable.ShapeRecyclerView_shape;
-    }
-
-    @Override
-    public int getSolidColor() {
-        return R.styleable.ShapeRecyclerView_solidColor;
-    }
-
-    @Override
-    public int getStrokeColor() {
-        return R.styleable.ShapeRecyclerView_strokeColor;
-    }
-
-    @Override
-    public int getStartColor() {
-        return R.styleable.ShapeRecyclerView_startColor;
-    }
-
-    @Override
-    public int getCenterColor() {
-        return R.styleable.ShapeRecyclerView_centerColor;
-    }
-
-    @Override
-    public int getEndColor() {
-        return R.styleable.ShapeRecyclerView_endColor;
-    }
-
-    @Override
-    public int getStartSelectColor() {
-        return R.styleable.ShapeRecyclerView_startSelectColor;
-    }
-
-    @Override
-    public int getCenterSelectColor() {
-        return R.styleable.ShapeRecyclerView_centerSelectColor;
-    }
-
-    @Override
-    public int getEndSelectColor() {
-        return R.styleable.ShapeRecyclerView_endSelectColor;
-    }
-
-    @Override
-    public int getOrientation() {
-        return R.styleable.ShapeRecyclerView_orientation;
-    }
-
-    @Override
-    public int getGradientType() {
-        return R.styleable.ShapeRecyclerView_gradientType;
-    }
-
-    @Override
-    public int getGradientRadius() {
-        return R.styleable.ShapeRecyclerView_gradientRadius;
-    }
-
-    @Override
-    public int getStrokeWidth() {
-        return R.styleable.ShapeRecyclerView_strokeWidth;
-    }
-
-    @Override
-    public int getDashWidth() {
-        return R.styleable.ShapeRecyclerView_dashWidth;
-    }
-
-    @Override
-    public int getDashGap() {
-        return R.styleable.ShapeRecyclerView_dashGap;
-    }
-
-    @Override
-    public int getRadius() {
-        return R.styleable.ShapeRecyclerView_radius;
-    }
-
-    @Override
-    public int getTopLeftRadius() {
-        return R.styleable.ShapeRecyclerView_topLeftRadius;
-    }
-
-    @Override
-    public int getTopRightRadius() {
-        return R.styleable.ShapeRecyclerView_topRightRadius;
-    }
-
-    @Override
-    public int getBottomLeftRadius() {
-        return R.styleable.ShapeRecyclerView_bottomLeftRadius;
-    }
-
-    @Override
-    public int getBottomRightRadius() {
-        return R.styleable.ShapeRecyclerView_bottomRightRadius;
-    }
-
-    @Override
-    public int isOpenSelector() {
-        return 0;
-    }
-
-    @Override
-    public int getTextNormalColor() {
-        return 0;
-    }
-
-    @Override
-    public int getTextSelectColor() {
-        return 0;
-    }
-
-    @Override
-    public int getSolidSelectColor() {
-        return 0;
-    }
-
-    @Override
-    public int getStrokeSelectColor() {
-        return 0;
-    }
+class ShapeRecyclerViewStyleable : IStyleable {
+    override val shape: Int
+        get() = R.styleable.ShapeRecyclerView_shape
+    override val solidColor: Int
+        get() = R.styleable.ShapeRecyclerView_solidColor
+    override val strokeColor: Int
+        get() = R.styleable.ShapeRecyclerView_strokeColor
+    override val startColor: Int
+        get() = R.styleable.ShapeRecyclerView_startColor
+    override val centerColor: Int
+        get() = R.styleable.ShapeRecyclerView_centerColor
+    override val endColor: Int
+        get() = R.styleable.ShapeRecyclerView_endColor
+    override val startSelectColor: Int
+        get() = R.styleable.ShapeRecyclerView_startSelectColor
+    override val centerSelectColor: Int
+        get() = R.styleable.ShapeRecyclerView_centerSelectColor
+    override val endSelectColor: Int
+        get() = R.styleable.ShapeRecyclerView_endSelectColor
+    override val orientation: Int
+        get() = R.styleable.ShapeRecyclerView_orientation
+    override val gradientType: Int
+        get() = R.styleable.ShapeRecyclerView_gradientType
+    override val gradientRadius: Int
+        get() = R.styleable.ShapeRecyclerView_gradientRadius
+    override val strokeWidth: Int
+        get() = R.styleable.ShapeRecyclerView_strokeWidth
+    override val dashWidth: Int
+        get() = R.styleable.ShapeRecyclerView_dashWidth
+    override val dashGap: Int
+        get() = R.styleable.ShapeRecyclerView_dashGap
+    override val radius: Int
+        get() = R.styleable.ShapeRecyclerView_radius
+    override val topLeftRadius: Int
+        get() = R.styleable.ShapeRecyclerView_topLeftRadius
+    override val topRightRadius: Int
+        get() = R.styleable.ShapeRecyclerView_topRightRadius
+    override val bottomLeftRadius: Int
+        get() = R.styleable.ShapeRecyclerView_bottomLeftRadius
+    override val bottomRightRadius: Int
+        get() = R.styleable.ShapeRecyclerView_bottomRightRadius
+    override val isOpenSelector: Int
+        get() = 0
+    override val textNormalColor: Int
+        get() = 0
+    override val textSelectColor: Int
+        get() = 0
+    override val solidSelectColor: Int
+        get() = 0
+    override val strokeSelectColor: Int
+        get() = 0
 }

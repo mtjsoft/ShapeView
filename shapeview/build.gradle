@@ -1,17 +1,15 @@
 apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
 apply plugin: 'com.github.dcendents.android-maven'
 group='com.github.mtjsoft'
 android {
-    compileSdkVersion 28
+    compileSdkVersion 29
 
     defaultConfig {
-        minSdkVersion 19
-        targetSdkVersion 28
-        versionCode 210
-        versionName "2.1.0"
-
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-
+        minSdkVersion 21
+        targetSdkVersion 29
+        versionCode 300
+        versionName "3.0.0"
     }
 
     buildTypes {
@@ -24,13 +22,13 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
     implementation "androidx.appcompat:appcompat:1.1.0"
     implementation 'androidx.recyclerview:recyclerview:1.0.0'
     implementation "androidx.constraintlayout:constraintlayout:1.1.3"

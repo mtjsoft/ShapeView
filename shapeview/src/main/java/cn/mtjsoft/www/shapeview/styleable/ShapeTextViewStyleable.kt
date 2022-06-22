@@ -1,7 +1,7 @@
-package cn.mtjsoft.www.shapeview.styleable;
+package cn.mtjsoft.www.shapeview.styleable
 
-import cn.mtjsoft.www.shapeview.R;
-import cn.mtjsoft.www.shapeview.imp.IStyleable;
+import cn.mtjsoft.www.shapeview.imp.IStyleable
+import cn.mtjsoft.www.shapeview.R
 
 /**
  * @author mtj
@@ -9,129 +9,55 @@ import cn.mtjsoft.www.shapeview.imp.IStyleable;
  * @desc
  * @email mtjsoft3@gmail.com
  */
-public class ShapeTextViewStyleable implements IStyleable {
-    @Override
-    public int getShape() {
-        return R.styleable.ShapeTextView_shape;
-    }
-
-    @Override
-    public int getSolidColor() {
-        return R.styleable.ShapeTextView_solidColor;
-    }
-
-    @Override
-    public int getStrokeColor() {
-        return R.styleable.ShapeTextView_strokeColor;
-    }
-
-    @Override
-    public int getStartColor() {
-        return R.styleable.ShapeTextView_startColor;
-    }
-
-    @Override
-    public int getCenterColor() {
-        return R.styleable.ShapeTextView_centerColor;
-    }
-
-    @Override
-    public int getEndColor() {
-        return R.styleable.ShapeTextView_endColor;
-    }
-
-    @Override
-    public int getStartSelectColor() {
-        return R.styleable.ShapeTextView_startSelectColor;
-    }
-
-    @Override
-    public int getCenterSelectColor() {
-        return R.styleable.ShapeTextView_centerSelectColor;
-    }
-
-    @Override
-    public int getEndSelectColor() {
-        return R.styleable.ShapeTextView_endSelectColor;
-    }
-
-    @Override
-    public int getOrientation() {
-        return R.styleable.ShapeTextView_orientation;
-    }
-
-    @Override
-    public int getGradientType() {
-        return R.styleable.ShapeTextView_gradientType;
-    }
-
-    @Override
-    public int getGradientRadius() {
-        return R.styleable.ShapeTextView_gradientRadius;
-    }
-
-    @Override
-    public int getStrokeWidth() {
-        return R.styleable.ShapeTextView_strokeWidth;
-    }
-
-    @Override
-    public int getDashWidth() {
-        return R.styleable.ShapeTextView_dashWidth;
-    }
-
-    @Override
-    public int getDashGap() {
-        return R.styleable.ShapeTextView_dashGap;
-    }
-
-    @Override
-    public int getRadius() {
-        return R.styleable.ShapeTextView_radius;
-    }
-
-    @Override
-    public int getTopLeftRadius() {
-        return R.styleable.ShapeTextView_topLeftRadius;
-    }
-
-    @Override
-    public int getTopRightRadius() {
-        return R.styleable.ShapeTextView_topRightRadius;
-    }
-
-    @Override
-    public int getBottomLeftRadius() {
-        return R.styleable.ShapeTextView_bottomLeftRadius;
-    }
-
-    @Override
-    public int getBottomRightRadius() {
-        return R.styleable.ShapeTextView_bottomRightRadius;
-    }
-
-    @Override
-    public int isOpenSelector() {
-        return 0;
-    }
-
-    @Override
-    public int getTextNormalColor() {
-        return 0;
-    }
-
-    @Override
-    public int getTextSelectColor() {
-        return 0;
-    }
-
-    @Override
-    public int getSolidSelectColor() {
-        return 0;
-    }
-
-    @Override
-    public int getStrokeSelectColor() {
-        return 0;
-    }
+class ShapeTextViewStyleable : IStyleable {
+    override val shape: Int
+        get() = R.styleable.ShapeTextView_shape
+    override val solidColor: Int
+        get() = R.styleable.ShapeTextView_solidColor
+    override val strokeColor: Int
+        get() = R.styleable.ShapeTextView_strokeColor
+    override val startColor: Int
+        get() = R.styleable.ShapeTextView_startColor
+    override val centerColor: Int
+        get() = R.styleable.ShapeTextView_centerColor
+    override val endColor: Int
+        get() = R.styleable.ShapeTextView_endColor
+    override val startSelectColor: Int
+        get() = R.styleable.ShapeTextView_startSelectColor
+    override val centerSelectColor: Int
+        get() = R.styleable.ShapeTextView_centerSelectColor
+    override val endSelectColor: Int
+        get() = R.styleable.ShapeTextView_endSelectColor
+    override val orientation: Int
+        get() = R.styleable.ShapeTextView_orientation
+    override val gradientType: Int
+        get() = R.styleable.ShapeTextView_gradientType
+    override val gradientRadius: Int
+        get() = R.styleable.ShapeTextView_gradientRadius
+    override val strokeWidth: Int
+        get() = R.styleable.ShapeTextView_strokeWidth
+    override val dashWidth: Int
+        get() = R.styleable.ShapeTextView_dashWidth
+    override val dashGap: Int
+        get() = R.styleable.ShapeTextView_dashGap
+    override val radius: Int
+        get() = R.styleable.ShapeTextView_radius
+    override val topLeftRadius: Int
+        get() = R.styleable.ShapeTextView_topLeftRadius
+    override val topRightRadius: Int
+        get() = R.styleable.ShapeTextView_topRightRadius
+    override val bottomLeftRadius: Int
+        get() = R.styleable.ShapeTextView_bottomLeftRadius
+    override val bottomRightRadius: Int
+        get() = R.styleable.ShapeTextView_bottomRightRadius
+    override val isOpenSelector: Int
+        get() = 0
+    override val textNormalColor: Int
+        get() = 0
+    override val textSelectColor: Int
+        get() = 0
+    override val solidSelectColor: Int
+        get() = 0
+    override val strokeSelectColor: Int
+        get() = 0
 }

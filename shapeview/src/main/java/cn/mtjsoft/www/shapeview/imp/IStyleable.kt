@@ -1,8 +1,4 @@
-package cn.mtjsoft.www.shapeview.imp;
-
-import android.os.Build;
-
-import androidx.annotation.RequiresApi;
+package cn.mtjsoft.www.shapeview.imp
 
 /**
  * @author mtj
@@ -10,54 +6,30 @@ import androidx.annotation.RequiresApi;
  * @desc
  * @email mtjsoft3@gmail.com
  */
-public interface IStyleable {
-    int getShape();
-
-    int getSolidColor();
-
-    int getStrokeColor();
-
-    int getStartColor();
-
-    int getCenterColor();
-
-    int getEndColor();
-
-    int getStartSelectColor();
-
-    int getCenterSelectColor();
-
-    int getEndSelectColor();
-
-    int getOrientation();
-
-    int getGradientType();
-
-    int getGradientRadius();
-
-    int getStrokeWidth();
-
-    int getDashWidth();
-
-    int getDashGap();
-
-    int getRadius();
-
-    int getTopLeftRadius();
-
-    int getTopRightRadius();
-
-    int getBottomLeftRadius();
-
-    int getBottomRightRadius();
-
-    int isOpenSelector();
-
-    int getTextNormalColor();
-
-    int getTextSelectColor();
-
-    int getSolidSelectColor();
-
-    int getStrokeSelectColor();
+interface IStyleable {
+    val shape: Int
+    val solidColor: Int
+    val strokeColor: Int
+    val startColor: Int
+    val centerColor: Int
+    val endColor: Int
+    val startSelectColor: Int
+    val centerSelectColor: Int
+    val endSelectColor: Int
+    val orientation: Int
+    val gradientType: Int
+    val gradientRadius: Int
+    val strokeWidth: Int
+    val dashWidth: Int
+    val dashGap: Int
+    val radius: Int
+    val topLeftRadius: Int
+    val topRightRadius: Int
+    val bottomLeftRadius: Int
+    val bottomRightRadius: Int
+    val isOpenSelector: Int
+    val textNormalColor: Int
+    val textSelectColor: Int
+    val solidSelectColor: Int
+    val strokeSelectColor: Int
 }

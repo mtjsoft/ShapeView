@@ -2,6 +2,7 @@ package cn.mtjsoft.www.shapeviewdemo;
 
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -44,5 +45,7 @@ public class MainActivity extends AppCompatActivity {
                                 ContextCompat.getColor(getBaseContext(), R.color.colorPrimary))
                         .setRadius(10)
         );
+        String str = String.format(getString(R.string.test_str),"小明", "男");
+        Log.i("mtj", str);
     }
 }

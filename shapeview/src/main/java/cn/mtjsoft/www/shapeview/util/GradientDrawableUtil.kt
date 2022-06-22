@@ -1,20 +1,10 @@
-package cn.mtjsoft.www.shapeview.util;
+package cn.mtjsoft.www.shapeview.util
 
-import android.graphics.drawable.GradientDrawable;
+import android.graphics.drawable.GradientDrawable
+import cn.mtjsoft.www.shapeview.builder.CustomBuilder
+import cn.mtjsoft.www.shapeview.builder.CustomBuilder.GradientType
 
-import cn.mtjsoft.www.shapeview.builder.CustomBuilder;
-
-public class GradientDrawableUtil {
-
-    private static GradientDrawableUtil gradientDrawableUtil;
-
-    public static GradientDrawableUtil init() {
-        if (gradientDrawableUtil == null) {
-            gradientDrawableUtil = new GradientDrawableUtil();
-        }
-        return gradientDrawableUtil;
-    }
-
+class GradientDrawableUtil {
     /**
      * @param radius      四个角的半径
      * @param colors      渐变的颜色
@@ -22,25 +12,36 @@ public class GradientDrawableUtil {
      * @param strokeColor 边框颜色
      * @return
      */
-    private GradientDrawable getNeedDrawable(@CustomBuilder.Shape int shape, float[] radius, int[] colors, int strokeWidth, int strokeColor, float dashWidth, float dashGap, GradientDrawable.Orientation orientation, @CustomBuilder.GradientType int gradient, float gradientRadius) {
-        GradientDrawable drawable = new GradientDrawable();
-        drawable.setDither(true);
-        drawable.setShape(shape);
-        drawable.setCornerRadii(radius);
+    private fun getNeedDrawable(
+        @CustomBuilder.Shape shape: Int,
+        radius: FloatArray,
+        colors: IntArray,
+        strokeWidth: Int,
+        strokeColor: Int,
+        dashWidth: Float,
+        dashGap: Float,
+        orientation: GradientDrawable.Orientation,
+        @GradientType gradient: Int,
+        gradientRadius: Float
+    ): GradientDrawable {
+        val drawable = GradientDrawable()
+        drawable.setDither(true)
+        drawable.shape = shape
+        drawable.cornerRadii = radius
         if (strokeWidth > 0) {
             if (dashWidth <= 0 || dashGap <= 0) {
-                drawable.setStroke(strokeWidth, strokeColor);
+                drawable.setStroke(strokeWidth, strokeColor)
             } else {
-                drawable.setStroke(strokeWidth, strokeColor, dashWidth, dashGap);
+                drawable.setStroke(strokeWidth, strokeColor, dashWidth, dashGap)
             }
         }
-        drawable.setOrientation(orientation);
-        drawable.setColors(colors);
-        drawable.setGradientType(gradient);
+        drawable.orientation = orientation
+        drawable.colors = colors
+        drawable.gradientType = gradient
         if (gradient == GradientDrawable.RADIAL_GRADIENT) {
-            drawable.setGradientRadius(gradientRadius);
+            drawable.gradientRadius = gradientRadius
         }
-        return drawable;
+        return drawable
     }
 
     /**
@@ -50,13 +51,19 @@ public class GradientDrawableUtil {
      * @param strokeColor 边框颜色
      * @return
      */
-    private GradientDrawable getNeedDrawable(@CustomBuilder.Shape int shape, float[] radius, int bgColor, int strokeWidth, int strokeColor) {
-        GradientDrawable drawable = new GradientDrawable();
-        drawable.setShape(shape);
-        drawable.setCornerRadii(radius);
-        drawable.setStroke(strokeWidth, strokeColor);
-        drawable.setColor(bgColor);
-        return drawable;
+    private fun getNeedDrawable(
+        @CustomBuilder.Shape shape: Int,
+        radius: FloatArray,
+        bgColor: Int,
+        strokeWidth: Int,
+        strokeColor: Int
+    ): GradientDrawable {
+        val drawable = GradientDrawable()
+        drawable.shape = shape
+        drawable.cornerRadii = radius
+        drawable.setStroke(strokeWidth, strokeColor)
+        drawable.setColor(bgColor)
+        return drawable
     }
 
     /**
@@ -68,16 +75,24 @@ public class GradientDrawableUtil {
      * @param dashGap     虚线边框间隙
      * @return
      */
-    private GradientDrawable getNeedDrawable(@CustomBuilder.Shape int shape, float[] radius, int bgColor, int strokeWidth, int strokeColor, float dashWidth, float dashGap) {
+    private fun getNeedDrawable(
+        @CustomBuilder.Shape shape: Int,
+        radius: FloatArray,
+        bgColor: Int,
+        strokeWidth: Int,
+        strokeColor: Int,
+        dashWidth: Float,
+        dashGap: Float
+    ): GradientDrawable {
         if (dashWidth <= 0 || dashGap <= 0) {
-            return getNeedDrawable(shape, radius, bgColor, strokeWidth, strokeColor);
+            return getNeedDrawable(shape, radius, bgColor, strokeWidth, strokeColor)
         }
-        GradientDrawable drawable = new GradientDrawable();
-        drawable.setShape(shape);
-        drawable.setCornerRadii(radius);
-        drawable.setStroke(strokeWidth, strokeColor, dashWidth, dashGap);
-        drawable.setColor(bgColor);
-        return drawable;
+        val drawable = GradientDrawable()
+        drawable.shape = shape
+        drawable.cornerRadii = radius
+        drawable.setStroke(strokeWidth, strokeColor, dashWidth, dashGap)
+        drawable.setColor(bgColor)
+        return drawable
     }
 
     /**
@@ -86,32 +101,62 @@ public class GradientDrawableUtil {
      * @param builder
      * @return
      */
-    public GradientDrawable getNormalDrawable(CustomBuilder builder) {
+    fun getNormalDrawable(builder: CustomBuilder): GradientDrawable {
         // 渐变色
-        if (builder.getStartColor() != 0 && builder.getEndColor() != 0) {
-            int size = 2;
-            if (builder.getCenterColor() != 0) {
-                size = 3;
+        if (builder.startColor != 0 && builder.endColor != 0) {
+            var size = 2
+            if (builder.centerColor != 0) {
+                size = 3
             }
-            int[] colors = new int[size];
-            colors[0] = builder.getStartColor();
+            val colors = IntArray(size)
+            colors[0] = builder.startColor
             if (size == 3) {
-                colors[1] = builder.getCenterColor();
-                colors[2] = builder.getEndColor();
+                colors[1] = builder.centerColor
+                colors[2] = builder.endColor
             } else {
-                colors[1] = builder.getEndColor();
+                colors[1] = builder.endColor
             }
-            return getNeedDrawable(builder.getShape(), new float[]{
-                            builder.getTopLeftRadius(), builder.getTopLeftRadius(), builder.getTopRightRadius(), builder.getTopRightRadius(),
-                            builder.getBottomRightRadius(), builder.getBottomRightRadius(), builder.getBottomLeftRadius(), builder.getBottomLeftRadius()
-                    }, colors, builder.getStrokeWidth(), builder.getStrokeColor(), builder.getDashWidth(), builder.getDashGap(), builder.getOrientation(),
-                    builder.getGradientType(), builder.getGradientRadius());
+            return getNeedDrawable(
+                builder.shape,
+                floatArrayOf(
+                    builder.topLeftRadius.toFloat(),
+                    builder.topLeftRadius.toFloat(),
+                    builder.topRightRadius.toFloat(),
+                    builder.topRightRadius.toFloat(),
+                    builder.bottomRightRadius.toFloat(),
+                    builder.bottomRightRadius.toFloat(),
+                    builder.bottomLeftRadius.toFloat(),
+                    builder.bottomLeftRadius.toFloat()
+                ),
+                colors,
+                builder.strokeWidth,
+                builder.strokeColor,
+                builder.dashWidth,
+                builder.dashGap,
+                builder.orientation,
+                builder.gradientType,
+                builder.gradientRadius
+            )
         }
         // 常规
-        return getNeedDrawable(builder.getShape(), new float[]{
-                builder.getTopLeftRadius(), builder.getTopLeftRadius(), builder.getTopRightRadius(), builder.getTopRightRadius(),
-                builder.getBottomRightRadius(), builder.getBottomRightRadius(), builder.getBottomLeftRadius(), builder.getBottomLeftRadius()
-        }, builder.getSolidColor(), builder.getStrokeWidth(), builder.getStrokeColor(), builder.getDashWidth(), builder.getDashGap());
+        return getNeedDrawable(
+            builder.shape,
+            floatArrayOf(
+                builder.topLeftRadius.toFloat(),
+                builder.topLeftRadius.toFloat(),
+                builder.topRightRadius.toFloat(),
+                builder.topRightRadius.toFloat(),
+                builder.bottomRightRadius.toFloat(),
+                builder.bottomRightRadius.toFloat(),
+                builder.bottomLeftRadius.toFloat(),
+                builder.bottomLeftRadius.toFloat()
+            ),
+            builder.solidColor,
+            builder.strokeWidth,
+            builder.strokeColor,
+            builder.dashWidth,
+            builder.dashGap
+        )
     }
 
     /**
@@ -120,30 +165,71 @@ public class GradientDrawableUtil {
      * @param builder
      * @return
      */
-    public GradientDrawable getSelectorDrawable(CustomBuilder builder) {
+    fun getSelectorDrawable(builder: CustomBuilder): GradientDrawable {
         // 渐变色
-        if (builder.getStartSelectColor() != 0 && builder.getEndSelectColor() != 0) {
-            int size = 2;
-            if (builder.getCenterSelectColor()!= 0) {
-                size = 3;
+        if (builder.startSelectColor != 0 && builder.endSelectColor != 0) {
+            var size = 2
+            if (builder.centerSelectColor != 0) {
+                size = 3
             }
-            int[] colors = new int[size];
-            colors[0] = builder.getStartSelectColor();
+            val colors = IntArray(size)
+            colors[0] = builder.startSelectColor
             if (size == 3) {
-                colors[1] = builder.getCenterSelectColor();
-                colors[2] = builder.getEndSelectColor();
+                colors[1] = builder.centerSelectColor
+                colors[2] = builder.endSelectColor
             } else {
-                colors[1] = builder.getEndSelectColor();
+                colors[1] = builder.endSelectColor
             }
-            return getNeedDrawable(builder.getShape(), new float[]{
-                            builder.getTopLeftRadius(), builder.getTopLeftRadius(), builder.getTopRightRadius(), builder.getTopRightRadius(),
-                            builder.getBottomRightRadius(), builder.getBottomRightRadius(), builder.getBottomLeftRadius(), builder.getBottomLeftRadius()
-                    }, colors, builder.getStrokeWidth(), builder.getStrokeColor(), builder.getDashWidth(), builder.getDashGap(), builder.getOrientation(),
-                    builder.getGradientType(), builder.getGradientRadius());
+            return getNeedDrawable(
+                builder.shape,
+                floatArrayOf(
+                    builder.topLeftRadius.toFloat(),
+                    builder.topLeftRadius.toFloat(),
+                    builder.topRightRadius.toFloat(),
+                    builder.topRightRadius.toFloat(),
+                    builder.bottomRightRadius.toFloat(),
+                    builder.bottomRightRadius.toFloat(),
+                    builder.bottomLeftRadius.toFloat(),
+                    builder.bottomLeftRadius.toFloat()
+                ),
+                colors,
+                builder.strokeWidth,
+                builder.strokeColor,
+                builder.dashWidth,
+                builder.dashGap,
+                builder.orientation,
+                builder.gradientType,
+                builder.gradientRadius
+            )
         }
-        return getNeedDrawable(builder.getShape(), new float[]{
-                builder.getTopLeftRadius(), builder.getTopLeftRadius(), builder.getTopRightRadius(), builder.getTopRightRadius(),
-                builder.getBottomRightRadius(), builder.getBottomRightRadius(), builder.getBottomLeftRadius(), builder.getBottomLeftRadius()
-        }, builder.getSolidSelectColor(), builder.getStrokeWidth(), builder.getStrokeSelectColor(), builder.getDashWidth(), builder.getDashGap());
+        return getNeedDrawable(
+            builder.shape,
+            floatArrayOf(
+                builder.topLeftRadius.toFloat(),
+                builder.topLeftRadius.toFloat(),
+                builder.topRightRadius.toFloat(),
+                builder.topRightRadius.toFloat(),
+                builder.bottomRightRadius.toFloat(),
+                builder.bottomRightRadius.toFloat(),
+                builder.bottomLeftRadius.toFloat(),
+                builder.bottomLeftRadius.toFloat()
+            ),
+            builder.solidSelectColor,
+            builder.strokeWidth,
+            builder.strokeSelectColor,
+            builder.dashWidth,
+            builder.dashGap
+        )
+    }
+
+    companion object {
+        private val gradientDrawableUtil: GradientDrawableUtil by lazy(mode = LazyThreadSafetyMode.SYNCHRONIZED) {
+            GradientDrawableUtil()
+        }
+
+        @JvmStatic
+        fun init(): GradientDrawableUtil {
+            return gradientDrawableUtil
+        }
     }
 }

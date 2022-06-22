@@ -1,7 +1,7 @@
-package cn.mtjsoft.www.shapeview.styleable;
+package cn.mtjsoft.www.shapeview.styleable
 
-import cn.mtjsoft.www.shapeview.R;
-import cn.mtjsoft.www.shapeview.imp.IStyleable;
+import cn.mtjsoft.www.shapeview.imp.IStyleable
+import cn.mtjsoft.www.shapeview.R
 
 /**
  * @author mtj
@@ -9,129 +9,55 @@ import cn.mtjsoft.www.shapeview.imp.IStyleable;
  * @desc
  * @email mtjsoft3@gmail.com
  */
-public class ShapeCheckBoxStyleable implements IStyleable {
-    @Override
-    public int getShape() {
-        return R.styleable.ShapeCheckBox_shape;
-    }
-
-    @Override
-    public int getSolidColor() {
-        return R.styleable.ShapeCheckBox_solidColor;
-    }
-
-    @Override
-    public int getStrokeColor() {
-        return R.styleable.ShapeCheckBox_strokeColor;
-    }
-
-    @Override
-    public int getStartColor() {
-        return R.styleable.ShapeCheckBox_startColor;
-    }
-
-    @Override
-    public int getCenterColor() {
-        return R.styleable.ShapeCheckBox_centerColor;
-    }
-
-    @Override
-    public int getEndColor() {
-        return R.styleable.ShapeCheckBox_endColor;
-    }
-
-    @Override
-    public int getStartSelectColor() {
-        return R.styleable.ShapeCheckBox_startSelectColor;
-    }
-
-    @Override
-    public int getCenterSelectColor() {
-        return R.styleable.ShapeCheckBox_centerSelectColor;
-    }
-
-    @Override
-    public int getEndSelectColor() {
-        return R.styleable.ShapeCheckBox_endSelectColor;
-    }
-
-    @Override
-    public int getOrientation() {
-        return R.styleable.ShapeCheckBox_orientation;
-    }
-
-    @Override
-    public int getGradientType() {
-        return R.styleable.ShapeCheckBox_gradientType;
-    }
-
-    @Override
-    public int getGradientRadius() {
-        return R.styleable.ShapeCheckBox_gradientRadius;
-    }
-
-    @Override
-    public int getStrokeWidth() {
-        return R.styleable.ShapeCheckBox_strokeWidth;
-    }
-
-    @Override
-    public int getDashWidth() {
-        return R.styleable.ShapeCheckBox_dashWidth;
-    }
-
-    @Override
-    public int getDashGap() {
-        return R.styleable.ShapeCheckBox_dashGap;
-    }
-
-    @Override
-    public int getRadius() {
-        return R.styleable.ShapeCheckBox_radius;
-    }
-
-    @Override
-    public int getTopLeftRadius() {
-        return R.styleable.ShapeCheckBox_topLeftRadius;
-    }
-
-    @Override
-    public int getTopRightRadius() {
-        return R.styleable.ShapeCheckBox_topRightRadius;
-    }
-
-    @Override
-    public int getBottomLeftRadius() {
-        return R.styleable.ShapeCheckBox_bottomLeftRadius;
-    }
-
-    @Override
-    public int getBottomRightRadius() {
-        return R.styleable.ShapeCheckBox_bottomRightRadius;
-    }
-
-    @Override
-    public int isOpenSelector() {
-        return R.styleable.ShapeCheckBox_openSelector;
-    }
-
-    @Override
-    public int getTextNormalColor() {
-        return R.styleable.ShapeCheckBox_textNormalColor;
-    }
-
-    @Override
-    public int getTextSelectColor() {
-        return R.styleable.ShapeCheckBox_textSelectColor;
-    }
-
-    @Override
-    public int getSolidSelectColor() {
-        return R.styleable.ShapeCheckBox_solidSelectColor;
-    }
-
-    @Override
-    public int getStrokeSelectColor() {
-        return R.styleable.ShapeCheckBox_strokeSelectColor;
-    }
+class ShapeCheckBoxStyleable : IStyleable {
+    override val shape: Int
+        get() = R.styleable.ShapeCheckBox_shape
+    override val solidColor: Int
+        get() = R.styleable.ShapeCheckBox_solidColor
+    override val strokeColor: Int
+        get() = R.styleable.ShapeCheckBox_strokeColor
+    override val startColor: Int
+        get() = R.styleable.ShapeCheckBox_startColor
+    override val centerColor: Int
+        get() = R.styleable.ShapeCheckBox_centerColor
+    override val endColor: Int
+        get() = R.styleable.ShapeCheckBox_endColor
+    override val startSelectColor: Int
+        get() = R.styleable.ShapeCheckBox_startSelectColor
+    override val centerSelectColor: Int
+        get() = R.styleable.ShapeCheckBox_centerSelectColor
+    override val endSelectColor: Int
+        get() = R.styleable.ShapeCheckBox_endSelectColor
+    override val orientation: Int
+        get() = R.styleable.ShapeCheckBox_orientation
+    override val gradientType: Int
+        get() = R.styleable.ShapeCheckBox_gradientType
+    override val gradientRadius: Int
+        get() = R.styleable.ShapeCheckBox_gradientRadius
+    override val strokeWidth: Int
+        get() = R.styleable.ShapeCheckBox_strokeWidth
+    override val dashWidth: Int
+        get() = R.styleable.ShapeCheckBox_dashWidth
+    override val dashGap: Int
+        get() = R.styleable.ShapeCheckBox_dashGap
+    override val radius: Int
+        get() = R.styleable.ShapeCheckBox_radius
+    override val topLeftRadius: Int
+        get() = R.styleable.ShapeCheckBox_topLeftRadius
+    override val topRightRadius: Int
+        get() = R.styleable.ShapeCheckBox_topRightRadius
+    override val bottomLeftRadius: Int
+        get() = R.styleable.ShapeCheckBox_bottomLeftRadius
+    override val bottomRightRadius: Int
+        get() = R.styleable.ShapeCheckBox_bottomRightRadius
+    override val isOpenSelector: Int
+        get() = R.styleable.ShapeCheckBox_openSelector
+    override val textNormalColor: Int
+        get() = R.styleable.ShapeCheckBox_textNormalColor
+    override val textSelectColor: Int
+        get() = R.styleable.ShapeCheckBox_textSelectColor
+    override val solidSelectColor: Int
+        get() = R.styleable.ShapeCheckBox_solidSelectColor
+    override val strokeSelectColor: Int
+        get() = R.styleable.ShapeCheckBox_strokeSelectColor
 }
