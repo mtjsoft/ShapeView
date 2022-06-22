@@ -3,7 +3,7 @@ package cn.mtjsoft.www.shapeview
 import android.content.Context
 import android.graphics.drawable.GradientDrawable
 import android.util.AttributeSet
-import androidx.appcompat.widget.AppCompatEditText
+import android.widget.EditText
 import cn.mtjsoft.www.shapeview.builder.CustomBuilder
 import cn.mtjsoft.www.shapeview.styleable.ShapeEditTextStyleable
 import cn.mtjsoft.www.shapeview.util.GradientDrawableUtil.Companion.init
@@ -17,7 +17,7 @@ class ShapeEditText @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet,
     defStyleAttr: Int = 0
-) : AppCompatEditText(context, attrs, defStyleAttr) {
+) : EditText(context, attrs, defStyleAttr) {
     /**
      * 自定背景Drawable
      */

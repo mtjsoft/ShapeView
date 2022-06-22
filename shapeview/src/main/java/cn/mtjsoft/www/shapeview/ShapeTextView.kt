@@ -3,7 +3,7 @@ package cn.mtjsoft.www.shapeview
 import android.content.Context
 import android.graphics.drawable.GradientDrawable
 import android.util.AttributeSet
-import androidx.appcompat.widget.AppCompatTextView
+import android.widget.TextView
 import cn.mtjsoft.www.shapeview.builder.CustomBuilder
 import cn.mtjsoft.www.shapeview.styleable.ShapeTextViewStyleable
 import cn.mtjsoft.www.shapeview.util.GradientDrawableUtil.Companion.init
@@ -15,7 +15,7 @@ class ShapeTextView @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet,
     defStyleAttr: Int = 0
-) : AppCompatTextView(context, attrs, defStyleAttr) {
+) : TextView(context, attrs, defStyleAttr) {
     //自定背景边框Drawable
     var gradientDrawable: GradientDrawable? = null
         private set

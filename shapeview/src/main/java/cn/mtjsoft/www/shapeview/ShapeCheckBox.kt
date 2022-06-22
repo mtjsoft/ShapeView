@@ -5,7 +5,7 @@ import android.content.res.ColorStateList
 import android.graphics.drawable.GradientDrawable
 import android.graphics.drawable.StateListDrawable
 import android.util.AttributeSet
-import androidx.appcompat.widget.AppCompatCheckBox
+import android.widget.CheckBox
 import cn.mtjsoft.www.shapeview.builder.CustomBuilder
 import cn.mtjsoft.www.shapeview.styleable.ShapeCheckBoxStyleable
 import cn.mtjsoft.www.shapeview.util.GradientDrawableUtil.Companion.init
@@ -17,7 +17,7 @@ class ShapeCheckBox @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet,
     defStyleAttr: Int = 0
-) : AppCompatCheckBox(context, attrs, defStyleAttr) {
+) : CheckBox(context, attrs, defStyleAttr) {
     //自定背景边框Drawable
     var gradientDrawable: GradientDrawable? = null
         private set
