@@ -4,12 +4,12 @@ apply plugin: 'com.github.dcendents.android-maven'
 group='com.github.mtjsoft'
 android {
     compileSdkVersion 29
-
+    buildToolsVersion '27.0.2'
     defaultConfig {
-        minSdkVersion 21
+        minSdkVersion 19
         targetSdkVersion 29
-        versionCode 301
-        versionName "3.0.1"
+        versionCode 300
+        versionName "3.0.0"
     }
 
     buildTypes {
@@ -29,6 +29,7 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation "androidx.appcompat:appcompat:1.1.0"
     implementation 'androidx.recyclerview:recyclerview:1.0.0'
     implementation "androidx.constraintlayout:constraintlayout:1.1.3"
 }
