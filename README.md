@@ -32,7 +32,7 @@ allprojects {
 
 ```
 dependencies {
-	        implementation 'com.github.mtjsoft:ShapeView:v2.1.0'
+	        implementation 'com.github.mtjsoft:ShapeView:v3.0.1'
 	}
 ```
 
@@ -40,6 +40,15 @@ dependencies {
 
 
 # 3、GridPager组件的版本及属性说明
+
+V3.0.1
+--------------------------
+- 原有的全部属性名称添加前缀 sv_ 
+- 防止自定义的属性和工程中的重复，升级此版本需谨慎
+
+V3.0.0
+--------------------------
+- 修改成kotlin
 
 V2.1.0
 --------------------------

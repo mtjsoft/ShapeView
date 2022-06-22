@@ -29,4 +29,5 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 
     implementation project(':shapeview')
+//    implementation 'com.github.mtjsoft:ShapeView:v3.0.0'
 }
