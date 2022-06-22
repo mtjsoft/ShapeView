@@ -1,15 +1,15 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'com.github.dcendents.android-maven'
-group = 'com.github.mtjsoft'
+group='com.github.mtjsoft'
 android {
     compileSdkVersion 29
 
     defaultConfig {
-        minSdkVersion 19
+        minSdkVersion 21
         targetSdkVersion 29
-        versionCode 302
-        versionName "3.0.2"
+        versionCode 301
+        versionName "3.0.1"
     }
 
     buildTypes {
@@ -28,5 +28,7 @@ android {
 }
 
 dependencies {
-    implementation 'androidx.annotation:annotation:1.2.0'
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'androidx.recyclerview:recyclerview:1.0.0'
+    implementation "androidx.constraintlayout:constraintlayout:1.1.3"
 }
